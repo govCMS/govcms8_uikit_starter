@@ -23,7 +23,7 @@
     "gulp-sass": "^4.0.1",
     "gulp-sass-glob": "^1.0.8",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.0",
+    "gulp-uglify": "^3.0.1",
     "jshint": "^2.9.5",
     "kss": "3.0.0-beta.18"
   },
