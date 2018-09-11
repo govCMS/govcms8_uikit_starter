@@ -1,6 +1,6 @@
 // Common styling for list paragraphs.
-.paragraph--type--item-list[class*="list-layout--"] .field__items,
-.paragraph--type--node-list[class*="list-layout--"] .field__items {
+.paragraph--type--item-list[class*="list-layout--"] .list,
+.paragraph--type--node-list[class*="list-layout--"] .list {
   @include AU-space(margin-left, -$AU-grid-12-gutter-width/2);
   @include AU-space(margin-right, -$AU-grid-12-gutter-width/2);
 
@@ -10,7 +10,7 @@
     justify-content: stretch;
   }
 
-  > .field__item {
+  > .list__item {
     @include AU-space(margin-top, $AU-grid-12-gutter-width);
   }
 
@@ -18,7 +18,7 @@
   &.erd-list--calendar-item {
     @include AU-space(margin-top, $AU-grid-12-gutter-width);
 
-    > .field__item {
+    > .list__item {
       @include AU-space(margin-top, 2px);
     }
   }
@@ -30,33 +30,33 @@
 ////
 // Two items in row.
 .list-layout--12 {
-  .field__items > .field__item {
+  .list > .list__item {
     @extend .col-sm-12;
   }
 }
 .list-layout--6-6 {
-  .field__items > .field__item {
+  .list > .list__item {
     @extend .col-sm-6;
   }
 }
 
 // Three items in row.
 .list-layout--4-4-4 {
-  .field__items > .field__item {
+  .list > .list__item {
     @extend .col-sm-4;
   }
 }
 
 // Four items in row.
 .list-layout--3-3-3-3 {
-  .field__items > .field__item {
+  .list > .list__item {
     @extend .col-sm-3;
   }
 }
 
 // Six items in row.
 .list-layout--2-2-2-2-2-2 {
-  .field__items > .field__item {
+  .list > .list__item {
     @extend .col-sm-2;
   }
 }
@@ -65,7 +65,7 @@
 // Equal columns.
 // Items width can be set dynamically up to 6 items in row.
 ////
-.list-layout--equal .field__items > .field__item {
+.list-layout--equal .list > .list__item {
   padding-left: $AU-grid-12-gutter-width/2;
   padding-right: $AU-grid-12-gutter-width/2;
 
@@ -84,7 +84,7 @@
 
   /* two items */
   &:first-child:nth-last-child(2),
-  &:first-child:nth-last-child(2) ~ .field__item {
+  &:first-child:nth-last-child(2) ~ .list__item {
     width: 100%;
 
     @include AU-media( sm ) {
@@ -94,7 +94,7 @@
 
   /* three items */
   &:first-child:nth-last-child(3),
-  &:first-child:nth-last-child(3) ~ .field__item {
+  &:first-child:nth-last-child(3) ~ .list__item {
     width: 100%;
 
     @include AU-media( sm ) {
@@ -104,7 +104,7 @@
 
   /* four items */
   &:first-child:nth-last-child(4),
-  &:first-child:nth-last-child(4) ~ .field__item {
+  &:first-child:nth-last-child(4) ~ .list__item {
     width: 100%;
 
     @include AU-media( sm ) {
@@ -118,7 +118,7 @@
 
   /* five items */
   &:first-child:nth-last-child(5),
-  &:first-child:nth-last-child(5) ~ .field__item {
+  &:first-child:nth-last-child(5) ~ .list__item {
     width: 100%;
 
     @include AU-media( sm ) {
