@@ -1,11 +1,18 @@
+$calendar-item__date-width: 4rem;
+
 .calendar-item {
   background: $govcms8-calendar-item-background;
   color: $govcms8-calendar-item-foreground;
+  display: flex;
+  justify-content: stretch;
 
   .calendar-item__date {
     @include AU-space(padding, .5unit);
     @include AU-fontgrid( sm );
+    @include AU-space(width, $calendar-item__date-width);
+    align-items: center;
     color: $govcms8-calendar-item-foreground;
+    display: flex;
     line-height: .8;
     text-align: center;
     text-transform: uppercase;
@@ -22,8 +29,8 @@
     span {
       @include AU-fontgrid( xl );
       color: $AU-color-foreground-action;
-      font-weight: 700;
       display: block;
+      font-weight: 700;
       margin: 0;
     }
   }
@@ -31,6 +38,7 @@
   .calendar-item__content {
     @include AU-space(padding, .5unit);
     border-left: 2px solid $AU-color-background;
+    width: calc(100% - #{$calendar-item__date-width});
 
     // All regions has one third unit gap between them.
     *[class^='calendar-item__'] + *[class^='calendar-item__'] {

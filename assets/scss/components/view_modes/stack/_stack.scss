@@ -1,11 +1,22 @@
 .stack {
-  color: $AU-color-foreground-text;
   background: $white;
   box-shadow: 0 0 20px $govcms8-color-shadow;
+  color: $AU-color-foreground-text;
   height: 100%;
 
   a {
     color: $AU-color-foreground-action;
+  }
+}
+
+.stack__image {
+  a {
+    display: block;
+  }
+
+  img {
+    display: block;
+    width: 100%;
   }
 }
 
@@ -16,6 +27,7 @@
   *[class^='stack__'] + *[class^='stack__'] {
     @include AU-space(margin-top, .3unit);
   }
+
   // Title has a full unit gap bellow.
   h3.stack__title {
     @include AU-space(margin-bottom, 1unit);
