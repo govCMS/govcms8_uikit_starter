@@ -1,10 +1,66 @@
+// Default styling for teaser view mode.
+$teaser--small_image-width: 8rem; // 128px
+$teaser--medium_image-width: 12.5rem; // 200px
+
+.teaser {
+  display: flex;
+  flex-direction: column;
+
+  @include AU-media( sm ) {
+    flex-direction: row;
+  }
+}
+
+.teaser__image {
+  order: 1;
+
+  a,
+  img {
+    display: block;
+  }
+}
+
 .teaser__content {
+  order: 2;
+
   // All regions has one third unit gap between them.
   *[class^='teaser__'] + *[class^='teaser__'] {
     @include AU-space(margin-top, .3unit);
   }
+
   // Title has a full unit gap bellow.
   h3.teaser__title {
     @include AU-space(margin-bottom, 1unit);
+  }
+}
+
+// Teaser small dimensions.
+.teaser--small {
+  .teaser__image {
+    @include AU-media( sm ) {
+      @include AU-space(width, $teaser--small_image-width);
+    }
+  }
+
+  .teaser__content {
+    @include AU-media( sm ) {
+      @include AU-space(padding-left, 1unit);
+      width: calc(100% - #{$teaser--small_image-width});
+    }
+  }
+}
+// Teaser (medium) dimensions.
+.teaser--medium {
+  .teaser__image {
+    @include AU-media( sm ) {
+      @include AU-space(width, $teaser--medium_image-width);
+    }
+  }
+
+  .teaser__content {
+    @include AU-media( sm ) {
+      @include AU-space(padding-left, 1unit);
+      width: calc(100% - #{$teaser--medium_image-width});
+    }
   }
 }
