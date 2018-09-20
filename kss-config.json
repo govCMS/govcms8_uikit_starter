@@ -21,6 +21,6 @@
   ],
 
   "namespace": [
-    "govcms8_uikit:../govcms8_uikit"
+    "govcms8_uikit:templates/uikit"
   ]
 }
