@@ -3,22 +3,22 @@
 // Using extends here, allows us to have templates without BS specific classes.
 // Leaving it open to switch more easily to different grid framework.
 ////
-.content-header-section {
+.page-layout__content-header-section {
   @include AU-space(margin-bottom, $AU-grid-12-gutter-width);
 
-  .content-header {
+  .page-layout__content-header {
     @extend .col-sm-12;
     @include AU-space(min-height, 0); // As this region is 100% width, we don't need prevent the collapsing of it.
   }
 }
 
-.content-section {
-  .content-top {
+.page-layout__content-section {
+  .page-layout__content-top {
     @extend .col-sm-12;
     @include AU-space(margin-bottom, $AU-grid-12-gutter-width);
   }
 
-  .content-bottom {
+  .page-layout__content-bottom {
     @extend .col-sm-12;
     @include AU-space(margin-top, $AU-grid-12-gutter-width);
   }
@@ -26,7 +26,7 @@
 
 // Select all layouts except .page-layout--edgy.
 .page-layout:not(.page-layout--edgy) {
-  .content-section {
+  .page-layout__content-section {
     @extend .container;
 
     @include AU-media(sm) {
@@ -41,8 +41,8 @@
   }
 }
 
-.content-footer-section {
-  .content-footer {
+.page-layout__content-footer-section {
+  .page-layout__content-footer {
     @extend .col-sm-12;
     @include AU-space(min-height, 0); // As this region is 100% width, we don't need prevent the collapsing of it.
   }
@@ -66,12 +66,12 @@
 .au-grid {
   // Layout 4 8
   .page-layout--48 {
-    .content {
+    .page-layout__content {
       @extend .col-sm-8;
       @extend .col-sm-push-4;
     }
 
-    .sidebar {
+    .page-layout__sidebar {
       @extend .col-sm-4;
       @extend .col-sm-pull-8;
     }
@@ -79,73 +79,73 @@
 
   // Layout 6 6
   .page-layout--66 {
-    .content {
+    .page-layout__content {
       @extend .col-sm-6;
     }
 
-    .sidebar {
+    .page-layout__sidebar {
       @extend .col-sm-6;
     }
   }
 
   // Layout 8 4
   .page-layout--84 {
-    .content {
+    .page-layout__content {
       @extend .col-sm-8;
     }
 
-    .sidebar {
+    .page-layout__sidebar {
       @extend .col-sm-4;
     }
   }
 
   // Layout 12 12
   .page-layout--1212 {
-    .content-top {
+    .page-layout__content-top {
       @include AU-space(min-height, 0);
     }
 
-    .content {
+    .page-layout__content {
       @extend .col-sm-12;
     }
 
-    .sidebar {
+    .page-layout__sidebar {
       @extend .col-sm-12;
     }
 
-    .content-bottom {
+    .page-layout__content-bottom {
       @include AU-space(min-height, 0);
     }
   }
 
   // Layout edgy
   .page-layout--edgy {
-    .content-section {
+    .page-layout__content-section {
       @extend .container-fluid;
 
-      .content-top {
+      .page-layout__content-top {
         @include AU-space(min-height, 0);
         @include AU-space(padding-left, 0); // Background goes to edge of the screen.
         @include AU-space(padding-right, 0); // Background goes to edge of the screen.
       }
 
-      .content {
+      .page-layout__content {
         @extend .col-sm-12;
         @include AU-space(padding-left, 0); // Background goes to edge of the screen.
         @include AU-space(padding-right, 0); // Background goes to edge of the screen.
       }
 
-      .content-bottom {
+      .page-layout__content-bottom {
         @include AU-space(min-height, 0);
         @include AU-space(padding-left, 0); // Background goes to edge of the screen.
         @include AU-space(padding-right, 0); // Background goes to edge of the screen.
       }
     }
 
-    .content-footer-section {
+    .page-layout__content-footer-section {
       @extend .container-fluid;
 
-      .content-footer {
+      .page-layout__content-footer {
         @include AU-space(padding-left, 0); // Background goes to edge of the screen.
         @include AU-space(padding-right, 0); // Background goes to edge of the screen.
       }
@@ -179,8 +179,8 @@
     }
   }
 
-  .content-section {
-    .content-top {
+  .page-layout__content-section {
+    .page-layout__content-top {
       box-shadow:inset 0 0 0 3px #BEBEBE;
       position: relative;
 
@@ -190,7 +190,7 @@
       }
     }
 
-    .content {
+    .page-layout__content {
       box-shadow:inset 0 0 0 3px #930000;
       position: relative;
 
@@ -200,7 +200,7 @@
       }
     }
 
-    .sidebar {
+    .page-layout__sidebar {
       box-shadow:inset 0 0 0 3px #648395;
       position: relative;
 
@@ -210,7 +210,7 @@
       }
     }
 
-    .content-bottom {
+    .page-layout__content-bottom {
       box-shadow:inset 0 0 0 3px #BEBEBE;
       position: relative;
 
@@ -221,8 +221,8 @@
     }
   }
 
-  .footer-section {
-    .footer {
+  .page-layout__content-footer-section {
+    .page-layout__content-footer {
       box-shadow:inset 0 0 0 3px #930000;
       position: relative;
 
