@@ -124,7 +124,7 @@ function govcms8_uikit_starter_preprocess_page(&$variables) {
   govcms8_uikit_starter_theme_settings_mappings($variables, $theme_settings_mappings);
 
   // Set flag saying if current page is using any page layout.
-  $variables['is_page_layout'] = drupal_static('govcms8_layouts_page', FALSE);
+  $variables['has_page_layout'] = drupal_static('govcms8_layouts_page', FALSE);
 }
 
 /**
@@ -135,7 +135,7 @@ function govcms8_uikit_starter_preprocess_layout(&$variables) {
   $layout = $variables['layout'];
   // Only if current layout is inside "GovCMS8 Layouts" module.
   if ($layout->getProvider() === 'govcms8_layouts') {
-    // Set "is_page_layout" flag into static variable storage.
+    // Set "has_page_layout" flag into static variable storage.
     if (substr($layout->id(), 0, 5) === 'page_') {
       drupal_static('govcms8_layouts_page', TRUE);
     }
