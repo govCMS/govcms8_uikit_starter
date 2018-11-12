@@ -1,4 +1,4 @@
-// Non panelized pages needs space between page title and content.
+// Pages not using GovCMS8 Layouts page layout needs space between page title and content.
 .au-grid > .content-top {
   @include AU-space(margin-bottom, $AU-grid-12-gutter-width);
 }

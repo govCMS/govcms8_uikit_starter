@@ -123,18 +123,21 @@ function govcms8_uikit_starter_preprocess_page(&$variables) {
   ];
   govcms8_uikit_starter_theme_settings_mappings($variables, $theme_settings_mappings);
 
-  // Check if current page is defined by Page manager.
-  $route = RouteMatch::createFromRequest(\Drupal::request());
-  $parameters = $route->getParameters();
+  // Set flag saying if current page is using any page layout.
+  $variables['is_page_layout'] = drupal_static('govcms8_layouts_page', FALSE);
+}
 
-  // Check if node is panelized.
-  if ($parameters->has('node')) {
-    /** @var \Drupal\node\Entity\Node $node */
-    $node = $parameters->get('node');
-    // If Panelizer is enabled for this node type.
-    if (is_object($node) && $node->hasField('panelizer')) {
-      // Set is_panelized variable.
-      $variables['is_panelized'] = TRUE;
+/**
+ * Implements template_preprocess_layout().
+ */
+function govcms8_uikit_starter_preprocess_layout(&$variables) {
+  /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
+  $layout = $variables['layout'];
+  // Only if current layout is inside "GovCMS8 Layouts" module.
+  if ($layout->getProvider() === 'govcms8_layouts') {
+    // Set "is_page_layout" flag into static variable storage.
+    if (substr($layout->id(), 0, 5) === 'page_') {
+      drupal_static('govcms8_layouts_page', TRUE);
     }
   }
 }
