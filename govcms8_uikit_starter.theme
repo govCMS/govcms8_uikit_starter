@@ -144,6 +144,13 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
       $variables["content"]["#attributes"]["region"] = $block->getRegion();
     }
   }
+
+  // Hide title on Main Menu.
+  if (isset($variables["elements"]["#id"])) {
+    if ($variables["elements"]["#id"] === "govcms8_uikit_starter_mainnavigation") {
+      $variables['hide_title'] = true;
+    }
+  }
 }
 
 /**
