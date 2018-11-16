@@ -10,6 +10,7 @@
   transition: all 600ms ease-in-out;
   z-index: -1;
 
+  &:focus,
   &.is-visible {
     opacity: 1;
     transition: all 300ms ease-in-out;
