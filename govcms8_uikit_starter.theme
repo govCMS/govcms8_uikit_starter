@@ -113,6 +113,13 @@ function govcms8_uikit_starter_preprocess_page(&$variables) {
   }
 }
 
+function govcms8_uikit_starter_form_alter(&$form, FormStateInterface $form_state) {
+  if (!empty($form['#info']['filter-search_api_fulltext'])) {
+    $form['#info']['filter-search_api_fulltext']['label'] = t('Enter search terms');
+    $form['actions']['submit']['#value'] = t('Submit search');
+  }
+}
+
 /**
  * Implements hook_preprocess_block().
  */

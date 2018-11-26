@@ -7,7 +7,17 @@
 
 // Logo and search box should be aligned.
 .header--vertical-align {
-  display: flex;
-  align-items: center;
-}
+  @include AU-media(xs) {
+    display: flex;
+    align-items: center;
+  }
 
+  .logo,
+  .search {
+    width: 100%;
+
+    @include AU-media(xs) {
+      width: 50%;
+    }
+  }
+}
