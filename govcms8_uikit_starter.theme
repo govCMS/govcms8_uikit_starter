@@ -113,8 +113,11 @@ function govcms8_uikit_starter_preprocess_page(&$variables) {
   }
 }
 
+/**
+ * Implements hook_form_alter().
+ */
 function govcms8_uikit_starter_form_alter(&$form, FormStateInterface $form_state) {
-  if (!empty($form['#info']['filter-search_api_fulltext'])) {
+  if ($form['#id'] === 'views-exposed-form-content-search-page-1') {
     $form['#info']['filter-search_api_fulltext']['label'] = t('Enter search terms');
     $form['actions']['submit']['#value'] = t('Submit search');
   }
