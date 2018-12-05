@@ -151,7 +151,9 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
     $block = \Drupal\block\Entity\Block::load($block_id);
 
     if ($block) {
-      $variables["content"]["#attributes"]["region"] = $block->getRegion();
+      if ($variables["content"]["#type"] !== "form") {
+        $variables["content"]["#attributes"]["region"] = $block->getRegion();
+      }
     }
   }
 
