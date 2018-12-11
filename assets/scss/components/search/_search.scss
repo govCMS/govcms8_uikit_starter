@@ -23,7 +23,7 @@ form#views-exposed-form-content-search-page-1 {
 
   .form-text {
     @include AU-fontgrid( xs, nospace );
-    @include AU-space( padding, 0.8unit 2unit 0.8unit 1unit );
+    @include AU-space( padding, 0.8unit 1unit 0.8unit 1unit );
     @include AU-space( border-top-right-radius, 0 );
     @include AU-space( border-bottom-right-radius, 0 );
     appearance: none;

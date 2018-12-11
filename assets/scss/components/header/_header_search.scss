@@ -1,0 +1,19 @@
+/**
+* Styling for header search form.
+ */
+
+.search {
+  @include AU-space(margin-top, 1.6unit);
+
+  @include AU-media(xs) {
+    margin-top: 0;
+  }
+
+  .form-submit {
+    text-indent: -999px;
+    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2230%22%20height%3D%2230%22%20viewBox%3D%220%200%2030%2030%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210.5%22%20stroke%3D%22white%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M21%2019L30%2028L28%2030L19%2021L21%2019Z%22%20fill%3D%22white%22%2F%3E%3C%2Fsvg%3E");
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
