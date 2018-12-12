@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation for a menu block.
+ * Theme override for a menu block.
  *
  * Available variables:
  * - plugin_id: The ID of the block implementation.
@@ -29,12 +29,10 @@
  * to or skip the links.
  * See http://juicystudio.com/article/screen-readers-display-none.php and
  * http://www.w3.org/TR/WCAG-TECHS/H42.html for more information.
- *
- * @ingroup themeable
  */
 #}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
-<nav role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby') }}>
+<nav aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby') }}>
   {# Label. If not displayed, we still provide it for screen readers. #}
   {% if not configuration.label_display %}
     {% set title_attributes = title_attributes.addClass('visually-hidden') %}
