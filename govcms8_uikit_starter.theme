@@ -42,6 +42,19 @@ function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStat
     '#default_value' => theme_get_setting('header_style'),
   ];
 
+  $form['govcms8_uikit_starter_settings']['main_nav_style'] = [
+    '#type' => 'select',
+    '#title' => t('Main navigation style'),
+    '#options'       => [
+      '' => t('-none-'),
+      'theme__main_nav--dark' => t('Dark'),
+      'theme__main_nav--alt' => t('Alt'),
+      'theme__main_nav--dark-alt' => t('Dark alt'),
+    ],
+    '#description' => t('Set style for main navigation.'),
+    '#default_value' => theme_get_setting('main_nav_style'),
+  ];
+
   $form['govcms8_uikit_starter_settings']['footer_style'] = [
     '#type' => 'select',
     '#title' => t('Footer style'),
@@ -121,6 +134,20 @@ function govcms8_uikit_starter_form_alter(&$form, FormStateInterface $form_state
     $form['#info']['filter-search_api_fulltext']['label'] = t('Enter search terms');
     $form['actions']['submit']['#value'] = t('Submit search');
   }
+}
+
+/**
+ * Implements hook_preprocess_main__menu().
+ */
+function govcms8_uikit_starter_preprocess_menu__main(&$variables) {
+  $theme_settings_mappings = [
+    'main_nav_style' => [
+      'theme__main_nav--dark' => 'au-body--dark au-main-nav--dark',
+      'theme__main_nav--alt' => 'au-body--alt au-main-nav--alt',
+      'theme__main_nav--dark-alt' => 'au-body--dark au-main-nav--dark au-main-nav--alt',
+    ],
+  ];
+  govcms8_uikit_starter_theme_settings_mappings($variables, $theme_settings_mappings);
 }
 
 /**

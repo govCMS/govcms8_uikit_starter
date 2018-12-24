@@ -10,31 +10,31 @@
 ]
 %}
 
-<header{{ header_attributes.addClass(header_classes) }}>
-  <div class="container">
-    <div class="row header--vertical-align">
+<div>
+  <header {{ header_attributes.addClass(header_classes) }}>
+    <div class="container">
+      <div class="row header--vertical-align">
 
-      {% if page.logo|render|striptags('<img><a>')|trim %}
-        <div class="logo col-sm-6">
-          {{ page.logo }}
-        </div>
-      {% endif %} {# /.logo #}
+        {% if page.logo|render|striptags('<img><a>')|trim %}
+          <div class="logo col-sm-6">
+            {{ page.logo }}
+          </div>
+        {% endif %} {# /.logo #}
 
-      {% if page.search|render|striptags|trim %}
-        <div class="search col-sm-6">
-          {{ page.search }}
-        </div>
-      {% endif %}{# /.search #}
+        {% if page.search|render|striptags|trim %}
+          <div class="search col-sm-6">
+            {{ page.search }}
+          </div>
+        {% endif %}{# /.search #}
 
+      </div>
     </div>
-  </div>
+  </header>
 
   {% if page.navigation|render|striptags|trim %}
     <div class="navigation">
-      <div class="container">
-        {{ page.navigation }}
-      </div>
+      {{ page.navigation }}
     </div>
   {% endif %}{# /.navigation #}
 
-</header>
+</div>
