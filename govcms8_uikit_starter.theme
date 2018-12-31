@@ -55,6 +55,19 @@ function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStat
     '#default_value' => theme_get_setting('main_nav_style'),
   ];
 
+  $form['govcms8_uikit_starter_settings']['side_nav_style'] = [
+    '#type' => 'select',
+    '#title' => t('Side navigation style'),
+    '#options'       => [
+      '' => t('-none-'),
+      'theme__side_nav--dark' => t('Dark'),
+      'theme__side_nav--alt' => t('Alt'),
+      'theme__side_nav--dark-alt' => t('Dark alt'),
+    ],
+    '#description' => t('Set style for side navigation.'),
+    '#default_value' => theme_get_setting('side_nav_style'),
+  ];
+
   $form['govcms8_uikit_starter_settings']['footer_style'] = [
     '#type' => 'select',
     '#title' => t('Footer style'),
@@ -134,6 +147,17 @@ function govcms8_uikit_starter_form_alter(&$form, FormStateInterface $form_state
     $form['#info']['filter-search_api_fulltext']['label'] = t('Enter search terms');
     $form['actions']['submit']['#value'] = t('Submit search');
   }
+}
+
+function govcms8_uikit_starter_preprocess_menu(&$variables) {
+  $theme_settings_mappings = [
+    'side_nav_style' => [
+      'theme__side_nav--dark' => 'au-body--dark au-side-nav--dark',
+      'theme__side_nav--alt' => 'au-body--alt au-side-nav--alt',
+      'theme__side_nav--dark-alt' => 'au-body--dark au-side-nav--dark au-side-nav--alt',
+    ],
+  ];
+  govcms8_uikit_starter_theme_settings_mappings($variables, $theme_settings_mappings);
 }
 
 /**
