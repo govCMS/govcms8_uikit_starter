@@ -280,10 +280,8 @@ function govcms8_uikit_starter_theme_find_active_link(&$links, $path) {
   foreach ($links as &$item) {
     if ($item['url']->toString() === $path) {
       $item['is_active'] = TRUE;
-    } else {
-      if (!empty($item['below'])) {
-        govcms8_uikit_starter_theme_find_active_link($item['below'], $path);
-      }
+    } elseif (!empty($item['below'])) {
+      govcms8_uikit_starter_theme_find_active_link($item['below'], $path);
     }
   }
 }
