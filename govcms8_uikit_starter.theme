@@ -234,7 +234,14 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
   // Hide title on Main Menu.
   if (isset($variables["elements"]["#id"])) {
     if ($variables["elements"]["#id"] === "govcms8_uikit_starter_mainnavigation") {
-      $variables['hide_title'] = true;
+      $variables["hide_title"] = true;
+    }
+  }
+
+  // Hide title on sidebar menus.
+  if (isset($variables["content"]["#menu_block_configuration"])) {
+    if ($variables["content"]["#menu_block_configuration"]["region"] === "sidebar") {
+      $variables["hide_title"] = true;
     }
   }
 }
