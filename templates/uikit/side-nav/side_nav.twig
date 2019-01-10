@@ -61,7 +61,7 @@
         ]
       %}
       <li{{ item.attributes.addClass(classes) }}>
-        {% if item.in_active_trail and not item.below %}
+        {% if item.is_active %}
           <span>{{ item.title }}</span>
         {% else %}
           {{ link(item.title, item.url) }}

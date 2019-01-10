@@ -159,6 +159,11 @@ function govcms8_uikit_starter_preprocess_menu(&$variables) {
   ];
 
   if (!empty($variables['items'])) {
+    // Find the active link and apply a flag.
+    $current_path = \Drupal::request()->getRequestUri();
+    govcms8_uikit_starter_theme_find_active_link($variables['items'], $current_path);
+
+    // Find the parent link (for menus starting at > depth 2).
     $items_arr = array_values($variables['items']);
     if (!empty($items_arr)) {
       $parent_link_id = $items_arr[0]['original_link']->getParent();
@@ -258,6 +263,27 @@ function govcms8_uikit_starter_theme_settings_mappings(array &$variables, array 
 
     if (isset($options[$setting])) {
       $variables[$variable] = $options[$setting];
+    }
+  }
+}
+
+/**
+ * Add `is_active` boolean to menu item that matches given path.
+ *
+ * @param array $links
+ *   Link array.
+ *
+ * @param $path
+ *   Path to check.
+ */
+function govcms8_uikit_starter_theme_find_active_link(&$links, $path) {
+  foreach ($links as &$item) {
+    if ($item['url']->toString() === $path) {
+      $item['is_active'] = TRUE;
+    } else {
+      if (!empty($item['below'])) {
+        govcms8_uikit_starter_theme_find_active_link($item['below'], $path);
+      }
     }
   }
 }
