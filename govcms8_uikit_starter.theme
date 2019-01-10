@@ -157,6 +157,24 @@ function govcms8_uikit_starter_preprocess_menu(&$variables) {
       'theme__side_nav--dark-alt' => 'au-body--dark au-side-nav--dark au-side-nav--alt',
     ],
   ];
+
+  if (!empty($variables['items'])) {
+    $items_arr = array_values($variables['items']);
+    if (!empty($items_arr)) {
+      $parent_link_id = $items_arr[0]['original_link']->getParent();
+      if ($parent_link_id !== "") {
+        $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+        $parent_link = $menu_link_manager->createInstance($parent_link_id);
+        $parent_title = $parent_link->getTitle();
+        $parent_url = $parent_link->getUrlObject();
+        $variables['parent_link'] = array(
+          "title" => $parent_title,
+          "url" => $parent_url,
+        );
+      }
+    }
+  }
+
   govcms8_uikit_starter_theme_settings_mappings($variables, $theme_settings_mappings);
 }
 

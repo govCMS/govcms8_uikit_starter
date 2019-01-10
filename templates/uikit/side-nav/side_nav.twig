@@ -4,6 +4,11 @@
  * Component for an main navigation.
  *
  * Variables:
+ * - attributes
+ * - side_nav_style: [string]
+ * - parent_link: [array]
+ *   - title: [string]
+ *   - url: [string]
  * - item: [array] The inpage navigation items. Each item is an object containing:
  *   - text: [string] Text of the item.
  *   - url: [string] URL of the item.
@@ -36,10 +41,11 @@
     In this section
   </button>
   <div id="nav-default" class="au-side-nav__content au-accordion--closed au-accordion__body">
-    <h2 class="au-sidenav__title">
-      <!-- TODO: Implement heading here -->
-      <a href="#">Implement heading here</a>
-    </h2>
+    {% if parent_link %}
+      <h2 class="au-sidenav__title">
+        {{ link(parent_link.title, parent_link.url) }}
+      </h2>
+    {% endif %}
     {{ menus.menu_links(items, attributes) }}
   </div>
 </aside>
