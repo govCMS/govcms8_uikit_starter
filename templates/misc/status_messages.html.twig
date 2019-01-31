@@ -27,10 +27,13 @@
   {% if type == 'status' %}
     {% set type = 'success' %}
   {% endif %}
-  {% include '@govcms8_uikit/page-alerts/page_alerts.twig' with {
-    messages: messages,
-    heading: status_headings[type],
-    modifier_class: attributes.addClass('au-page-alerts--' ~ type).class|safe_join(' ')
-  } only
+  {% set pageAlertsTemplate = directory ~ '/templates/uikit/page-alerts/page_alerts.twig' %}
+  {% set defaultPageAlertsTemplate = '@govcms8_uikit_starter/uikit/page-alerts/page_alerts.twig' %}
+  {%
+    include [pageAlertsTemplate, defaultPageAlertsTemplate] with {
+      messages: messages,
+      heading: status_headings[type],
+      modifier_class: attributes.addClass('au-page-alerts--' ~ type).class|safe_join(' ')
+    } only
   %}
 {% endfor %}

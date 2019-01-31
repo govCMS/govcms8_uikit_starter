@@ -1,7 +1,9 @@
 {% if breadcrumb %}
+  {% set breadcrumbTemplate = directory ~ '/templates/uikit/breadcrumb/breadcrumb.twig' %}
+  {% set defaultBreadcrumbTemplate = '@govcms8_uikit_starter/uikit/breadcrumb/breadcrumb.twig' %}
   {%
-    include '@govcms8_uikit/breadcrumb/breadcrumb.twig' with {
-    items: breadcrumb
-  } only
+    include [breadcrumbTemplate, defaultBreadcrumbTemplate] with {
+      items: breadcrumb
+    } only
   %}
 {% endif %}

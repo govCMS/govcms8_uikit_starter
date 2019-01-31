@@ -54,7 +54,9 @@
 
 <div{{ attributes.addClass(classes)}}>
   {# Header element #}
-  {% include '@govcms8_uikit_starter/inc/page_header.html.twig' %}
+  {% set pageHeaderTemplate = directory ~ '/templates/inc/page_header.html.twig' %}
+  {% set defaultPageHeaderTemplate = '@govcms8_uikit_starter/inc/page_header.html.twig' %}
+  {% include [pageHeaderTemplate, defaultPageHeaderTemplate] %}
 
   {% if page.help %}
     <div class="page-help">
@@ -119,7 +121,9 @@
   </main>
 
   {# Footer element. #}
-  {%  include '@govcms8_uikit_starter/inc/page_footer.html.twig' %}
+  {% set pageFooterTemplate = directory ~ '/templates/inc/page_footer.html.twig' %}
+  {% set defaultPageFooterTemplate = '@govcms8_uikit_starter/inc/page_footer.html.twig' %}
+  {% include [pageFooterTemplate, defaultPageFooterTemplate] %}
 
   <div id="back-to-top"><button title="Back to top" class="back-to-top__link au-direction-link au-direction-link--up">Back to top</button></div>
 </div>{# /.layout-container #}

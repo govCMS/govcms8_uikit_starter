@@ -1,1 +1,3 @@
-{% include '@govcms8_uikit_starter/inc/list.twig' %}
+{% set nlNodeTemplate = directory ~ '/templates/inc/list.twig' %}
+{% set defaultNlNodeTemplate = '@govcms8_uikit_starter/inc/list.twig' %}
+{% include [nlNodeTemplate, defaultNlNodeTemplate] %}
