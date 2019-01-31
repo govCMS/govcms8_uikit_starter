@@ -24,12 +24,14 @@
 {{ attach_library('govcms8_uikit_starter/uikit-accordion') }}
 
 {% if items %}
+  {% set sideNavTemplate = directory ~ '/templates/uikit/side-nav/side_nav.twig' %}
+  {% set defaultSideNavTemplate = '@govcms8_uikit_starter/uikit/side-nav/side_nav.twig' %}
   {%
-    include '@govcms8_uikit_starter/uikit/side-nav/side_nav.twig' with {
-    items: items,
-    attributes: attributes,
-    side_nav_style: side_nav_style,
-    parent_link: parent_link
-  } only
+    include [sideNavTemplate, defaultSideNavTemplate] with {
+      items: items,
+      attributes: attributes,
+      side_nav_style: side_nav_style,
+      parent_link: parent_link
+    } only
   %}
 {% endif %}

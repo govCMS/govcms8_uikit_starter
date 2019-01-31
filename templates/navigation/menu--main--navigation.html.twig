@@ -24,10 +24,12 @@
 {{ attach_library('govcms8_uikit_starter/uikit-main-nav') }}
 
 {% if items %}
+  {% set mainNavTemplate = directory ~ '/templates/uikit/main-nav/main_nav.twig' %}
+  {% set defaultMainNavTemplate = '@govcms8_uikit_starter/uikit/main-nav/main_nav.twig' %}
   {%
-    include '@govcms8_uikit_starter/uikit/main-nav/main_nav.twig' with {
-    items: items,
-    main_nav_style: main_nav_style
-  } only
+    include [mainNavTemplate, defaultMainNavTemplate] with {
+      items: items,
+      main_nav_style: main_nav_style
+    } only
   %}
 {% endif %}
