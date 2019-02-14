@@ -44,27 +44,27 @@ form#views-exposed-form-content-search-page-1 {
     }
 
     &::placeholder {
-      color: $AU-color-foreground-muted-suggestion;
+      color: $AU-color-foreground-muted;
       opacity: 1;
     }
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-      color: $AU-color-foreground-muted-suggestion;
+      color: $AU-color-foreground-muted;
       opacity: 1;
     }
 
     &::-moz-placeholder { /* Firefox 19+ */
-      color: $AU-color-foreground-muted-suggestion;
+      color: $AU-color-foreground-muted;
       opacity: 1;
     }
 
     &:-ms-input-placeholder { /* IE 10+ */
-      color: $AU-color-foreground-muted-suggestion;
+      color: $AU-color-foreground-muted;
       opacity: 1;
     }
 
     &:-moz-placeholder { /* Firefox 18- */
-      color: $AU-color-foreground-muted-suggestion;
+      color: $AU-color-foreground-muted;
       opacity: 1;
     }
   }
