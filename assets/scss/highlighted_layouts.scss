@@ -1,0 +1,80 @@
+////
+// Highlighted layouts theme settings.
+////
+%highlighted_layout_before {
+  background: #444444;
+  color: #FFFFFF;
+  font-size: 1rem;
+  padding: 2px 4px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.highlighted-layouts {
+  .header-section {
+    .header {
+      box-shadow: inset 0 0 0 3px #930000;
+      position: relative;
+
+      &::before {
+        @extend %highlighted_layout_before;
+        content: "header";
+      }
+    }
+  }
+
+  .page-layout__content-section {
+    .page-layout__content-top {
+      box-shadow: inset 0 0 0 3px #BEBEBE;
+      position: relative;
+
+      &::before {
+        @extend %highlighted_layout_before;
+        content: "content top";
+      }
+    }
+
+    .page-layout__content {
+      box-shadow: inset 0 0 0 3px #930000;
+      position: relative;
+
+      &::before {
+        @extend %highlighted_layout_before;
+        content: "content";
+      }
+    }
+
+    .page-layout__sidebar {
+      box-shadow: inset 0 0 0 3px #648395;
+      position: relative;
+
+      &::before {
+        @extend %highlighted_layout_before;
+        content: "sidebar";
+      }
+    }
+
+    .page-layout__content-bottom {
+      box-shadow: inset 0 0 0 3px #BEBEBE;
+      position: relative;
+
+      &::before {
+        @extend %highlighted_layout_before;
+        content: "content bottom";
+      }
+    }
+  }
+
+  .page-layout__content-footer-section {
+    .page-layout__content-footer {
+      box-shadow: inset 0 0 0 3px #930000;
+      position: relative;
+
+      &::before {
+        @extend %highlighted_layout_before;
+        content: "footer";
+      }
+    }
+  }
+}

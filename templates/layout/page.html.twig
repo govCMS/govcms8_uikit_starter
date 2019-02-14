@@ -52,6 +52,10 @@
 ]
 %}
 
+{% if theme__highlighted_layouts %}
+  {{ attach_library('govcms8_uikit_starter/highlighted-layouts') }}
+{% endif %}
+
 <div{{ attributes.addClass(classes)}}>
   {# Header element #}
   {% include '@govcms8_uikit_starter/inc/page_header.html.twig' %}
