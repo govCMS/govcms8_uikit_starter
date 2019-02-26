@@ -52,6 +52,10 @@
 ]
 %}
 
+{% if theme__highlighted_layouts %}
+  {{ attach_library('govcms8_uikit_starter/highlighted-layouts') }}
+{% endif %}
+
 <div{{ attributes.addClass(classes)}}>
   {# Header element #}
   {% include '@govcms8_uikit_starter/inc/page_header.html.twig' %}
@@ -82,7 +86,7 @@
   {% endif %}
 
   {# Main content area of the page. #}
-  <main role="main">
+  <main>
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
     {# Template for panelized node pages. #}
@@ -102,7 +106,7 @@
               {{ page.content }}
             </div>{# /.layout-content #}
 
-            <aside class="layout-sidebar col-sm-4" role="complementary">
+            <aside class="layout-sidebar col-sm-4">
               {{ page.sidebar }}
             </aside>
           </div>

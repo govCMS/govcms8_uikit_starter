@@ -17,7 +17,7 @@
 
     {% if orientation == 'open' %}
       <a href="#accordion-{{ id }}" class="au-accordion__title"
-         aria-expanded="true" aria-selected="true" aria-controls="accordion-{{ id }}" role="tab" onclick="return AU.accordion.Toggle( this{{ speed }} )">{{ title }}</a>
+         aria-expanded="true" aria-selected="true" aria-controls="accordion-{{ id }}" onclick="return AU.accordion.Toggle( this{{ speed }} )">{{ title }}</a>
 
       <div class="au-accordion__body" aria-hidden="false" id="accordion-{{ id }}">
         <div class="au-accordion__body-wrapper">{{ body }}</div>
@@ -26,7 +26,7 @@
     {% else %}
 
       <a href="#accordion-{{ id }}" class="au-accordion__title au-accordion--closed"
-         aria-expanded="false" aria-selected="false" aria-controls="accordion-{{ id }}" role="tab" onclick="return AU.accordion.Toggle( this{{ speed }} )">{{ title }}</a>
+         aria-expanded="false" aria-selected="false" aria-controls="accordion-{{ id }}" onclick="return AU.accordion.Toggle( this{{ speed }} )">{{ title }}</a>
 
       <div class="au-accordion__body au-accordion--closed" aria-hidden="true" id="accordion-{{ id }}">
         <div class="au-accordion__body-wrapper">{{ body }}</div>

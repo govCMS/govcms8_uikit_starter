@@ -9,13 +9,13 @@ table {
   }
 
   thead th {
-    border-bottom: 2px solid $AU-color-background-alt-shade-suggestion;
+    border-bottom: 2px solid $AU-color-background-alt-shade;
   }
 
   &.table-bordered {
     td,
     th {
-      border: 1px solid $AU-color-background-alt-shade-suggestion;
+      border: 1px solid $AU-color-background-alt-shade;
     }
 
     thead th {
@@ -44,7 +44,7 @@ table {
 
   &.table-striped tbody {
     tr:nth-child(odd) {
-      background: $AU-color-background-alt-suggestion;
+      background: $AU-color-background-alt;
     }
 
     tr:nth-child(even) {
