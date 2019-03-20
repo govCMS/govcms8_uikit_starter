@@ -4,7 +4,6 @@
     "type": "drupal-theme",
     "license": "GPL-2.0+",
     "require": {
-        "drupal/core": "8.6.10"
     },
     "repositories": {
         "drupal": {
