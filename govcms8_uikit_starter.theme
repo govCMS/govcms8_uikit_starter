@@ -226,7 +226,7 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
 
     if ($block) {
       if (empty($variables["content"]["#type"]) || $variables["content"]["#type"] !== "form") {
-        $variables["content"]["#attributes"]["region"] = $block->getRegion();
+        $variables["content"]["#attributes"]["data-region"] = $block->getRegion();
       }
     }
   }
@@ -250,8 +250,8 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
  * Implements hook_theme_suggestions_menu_alter().
  */
 function govcms8_uikit_starter_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
-  if (isset($variables["attributes"]["region"])) {
-    $suggestions[] = $variables["theme_hook_original"] . "__" . $variables["attributes"]["region"];
+  if (isset($variables["attributes"]["data-region"])) {
+    $suggestions[] = $variables["theme_hook_original"] . "__" . $variables["attributes"]["data-region"];
   }
 }
 

@@ -31,14 +31,20 @@
  * http://www.w3.org/TR/WCAG-TECHS/H42.html for more information.
  */
 #}
-{% set heading_id = attributes.id ~ '-menu'|clean_id %}
-<nav aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby') }}>
+{% if attributes.id %}
+  {% set heading_id = attributes.id ~ '-menu'|clean_id %}
+{% endif %}
+{% if not hide_title and heading_id %}
+  <nav aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby') }}>
+{% else %}
+  <nav{{ attributes|without('role') }}>
+{% endif %}
   {# Label. If not displayed, we still provide it for screen readers. #}
   {% if not configuration.label_display %}
     {% set title_attributes = title_attributes.addClass('visually-hidden') %}
   {% endif %}
   {{ title_prefix }}
-  {% if not hide_title %}
+  {% if not hide_title and heading_id %}
     <h2{{ title_attributes.setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
   {% endif %}
   {{ title_suffix }}

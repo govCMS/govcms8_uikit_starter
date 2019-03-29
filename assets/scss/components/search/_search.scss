@@ -34,6 +34,7 @@ form#views-exposed-form-content-search-page-1 {
     display: block;
     margin: 0;
     width: 100%;
+    min-width: 100%;
 
     @include AU-media( sm ) {
       @include AU-fontgrid( sm, nospace);
