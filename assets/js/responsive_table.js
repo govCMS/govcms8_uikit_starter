@@ -7,10 +7,7 @@
 
   Drupal.behaviors.govcms8_uikit_starter_tableResponsive = {
     attach: function (context, settings) {
-
-      var table = $("table");
-      $(table).wrap("<div class='table-responsive'></div>");
-
+      $('table', context).wrap('<div class="table-responsive"></div>');
     }
   };
 
