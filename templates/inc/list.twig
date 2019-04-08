@@ -39,11 +39,11 @@
 
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes.addClass(classes, 'list') }}>
+    <ul{{ attributes.addClass(classes, 'list') }}>
       {% for item in items %}
-        <div{{ item.attributes.addClass('list__item') }}>{{ item.content }}</div>
+        <li{{ item.attributes.addClass('list__item') }}>{{ item.content }}</li>
       {% endfor %}
-    </div>
+    </ul>
   {% else %}
     {% for item in items %}
       <div{{ attributes.addClass(classes, 'list__item') }}>{{ item.content }}</div>
@@ -53,13 +53,13 @@
   <div{{ attributes.addClass(classes) }}>
     <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% if multiple %}
-    <div class="list">
+    <ul class="list">
       {% endif %}
       {% for item in items %}
-        <div{{ item.attributes.addClass('list__item') }}>{{ item.content }}</div>
+        <li{{ item.attributes.addClass('list__item') }}>{{ item.content }}</li>
       {% endfor %}
       {% if multiple %}
-    </div>
+    </ul>
     {% endif %}
   </div>
 {% endif %}

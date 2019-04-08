@@ -40,3 +40,12 @@
 				'</svg>');
   }
 }
+
+.accordion-group__control {
+  & {
+    display: none;
+  }
+  .js & {
+    display: inline-block;
+  }
+}

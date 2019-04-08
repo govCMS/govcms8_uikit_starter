@@ -28,7 +28,6 @@
     "kss": "3.0.0-beta.18"
   },
   "dependencies": {
-    "@gov.au/core": "latest",
     "@gov.au/accordion": "latest",
     "@gov.au/animate": "latest",
     "@gov.au/body": "latest",
@@ -36,6 +35,7 @@
     "@gov.au/buttons": "latest",
     "@gov.au/callout": "latest",
     "@gov.au/control-input": "latest",
+    "@gov.au/core": "latest",
     "@gov.au/cta-link": "latest",
     "@gov.au/direction-links": "latest",
     "@gov.au/footer": "latest",
@@ -45,10 +45,12 @@
     "@gov.au/inpage-nav": "latest",
     "@gov.au/keyword-list": "latest",
     "@gov.au/link-list": "latest",
+    "@gov.au/main-nav": "latest",
     "@gov.au/page-alerts": "latest",
     "@gov.au/progress-indicator": "latest",
     "@gov.au/responsive-media": "latest",
     "@gov.au/select": "latest",
+    "@gov.au/side-nav": "latest",
     "@gov.au/skip-link": "latest",
     "@gov.au/tags": "latest",
     "@gov.au/text-inputs": "latest"

@@ -8,6 +8,11 @@
     justify-content: stretch;
   }
 
+  .views-list ul {
+    list-style: none;
+    padding: 0;
+  }
+
   .views-row {
     @include AU-space(margin-top, $AU-grid-12-gutter-width);
   }

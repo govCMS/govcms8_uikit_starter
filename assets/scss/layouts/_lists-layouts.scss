@@ -3,6 +3,8 @@
 .paragraph--type--node-list[class*="list-layout--"] .list {
   @include AU-space(margin-left, -$AU-grid-12-gutter-width/2);
   @include AU-space(margin-right, -$AU-grid-12-gutter-width/2);
+  list-style: none;
+  padding-left: 0;
 
   @include AU-media( sm ) {
     display: flex;

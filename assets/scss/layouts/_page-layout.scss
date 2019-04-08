@@ -2,3 +2,11 @@
 .au-grid > .content-top {
   @include AU-space(margin-bottom, $AU-grid-12-gutter-width);
 }
+
+// Content top region needs space between menu and breadcrumbs
+.region-content-top,
+.block-region-header {
+  > div {
+    @include AU-space(margin-top, $AU-grid-12-gutter-width);
+  }
+}

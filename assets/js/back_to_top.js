@@ -7,24 +7,25 @@
 
   Drupal.behaviors.govcms8_uikit_starter_BackToTop = {
     attach: function (context, settings) {
-      var backToTop = $("#back-to-top button");
+      var $body = $('body, html');
+      var backToTop = $('.back-to-top__link', context);
 
       // Toggle class on backToTop.
-      $(function () {
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > 250) {
-            backToTop.addClass('is-visible');
-          } else {
-            backToTop.removeClass('is-visible');
-          }
-        });
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 250) {
+          backToTop.addClass('is-visible');
+        } else {
+          backToTop.removeClass('is-visible');
+        }
       });
 
       // Scroll smoothly to top on click.
       backToTop.click(function (event) {
-        $('body,html').animate({
+        $body.animate({
           scrollTop: 0
-        }, 800);
+        }, 800, function () {
+          $body.attr('tabindex','-1').focus().removeAttr('tabindex');
+        });
         event.preventDefault();
       });
 

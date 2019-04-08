@@ -6,6 +6,12 @@ global-styling:
   js:
     js/govcms8_uikit_starter.js: {}
 
+highlighted-layouts:
+  css:
+    theme:
+      css/highlighted_layouts.css: {}
+
+
 uikit-animate:
   version: 1.0.2
   js:
@@ -15,3 +21,8 @@ uikit-accordion:
   version: 3.0.0
   js:
     js/accordion.js: {}
+
+uikit-main-nav:
+  version: 1.0.0
+  js:
+    js/main-nav.js: {}
