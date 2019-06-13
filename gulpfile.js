@@ -168,10 +168,21 @@ gulp.task('removeSourceMaps', function() {
   return del(['./css/style.css.map', './js/govcms8_uikit_starter.js.map']);
 });
 
+// Twig
+gulp.task("twig", function() {
+  return gulp
+    .src(config.twig.src)
+    .pipe(browserSync.reload({ stream: true, match: "**/*.twig" }));
+});
+
+
 // Watch task.
 gulp.task('watch', function() {
   gulp.watch(config.css.src, { usePolling: true }, gulp.series('css_dev'));
   gulp.watch(config.js.src, { usePolling: true }, gulp.series('scripts_dev', 'removeTemporaryStorage'));
+  if (configLocal.watchTwig) {
+    gulp.watch(config.twig.src, gulp.series("twig"));
+  }
 });
 
 // JS Linting.
