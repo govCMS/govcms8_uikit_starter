@@ -5,8 +5,10 @@
   "main": "gulpfile.js",
   "author": "morpht.com",
   "scripts": {
-    "setup": "npm install",
-    "styleguide": "kss --config kss-config.json"
+    "setup": "npm ci",
+    "styleguide": "kss --config kss-config.json",
+    "gulp": "gulp",
+    "gulp dev": "gulp dev"
   },
   "devDependencies": {
     "autoprefixer": "^8.5.1",
