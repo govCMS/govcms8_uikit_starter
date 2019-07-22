@@ -30,6 +30,11 @@
     "jshint": "^2.9.5",
     "kss": "3.0.0-beta.18"
   },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "ie 10"
+  ],
   "dependencies": {
     "@gov.au/accordion": "latest",
     "@gov.au/animate": "latest",
