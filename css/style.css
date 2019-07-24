@@ -202,7 +202,7 @@ body {
 /**
  * AU-border-radius styles
  */
-/*! @gov.au/accordion v7.0.3 */
+/*! @gov.au/accordion v7.0.8 */
 @media print {
   .au-accordion {
     border-color: #000 !important;
@@ -256,8 +256,7 @@ body {
   display: block;
   color: #00698f;
   text-decoration: underline;
-  -webkit-text-decoration-skip: ink;
-          text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
   font-weight: bold;
   position: relative;
   -webkit-box-sizing: border-box;
