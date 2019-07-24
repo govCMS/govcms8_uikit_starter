@@ -36,7 +36,7 @@
     "ie 10"
   ],
   "dependencies": {
-    "@gov.au/accordion": "^7.0.3",
+    "@gov.au/accordion": "^7.0.8",
     "@gov.au/animate": "^1.0.12",
     "@gov.au/body": "^2.0.13",
     "@gov.au/breadcrumbs": "^3.0.3",
