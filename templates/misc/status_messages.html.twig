@@ -30,7 +30,8 @@
   {% include '@govcms8_uikit/page-alerts/page_alerts.twig' with {
     messages: messages,
     heading: status_headings[type],
-    modifier_class: attributes.addClass('au-page-alerts--' ~ type).class|safe_join(' ')
+    modifier_class: attributes.addClass('au-page-alerts--' ~ type).class|safe_join(' '),
+    attributes: attributes.setAttribute('aria-label', status_headings[type])
   } only
   %}
 {% endfor %}
