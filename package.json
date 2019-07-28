@@ -53,7 +53,7 @@
     "@gov.au/inpage-nav": "^3.0.4",
     "@gov.au/keyword-list": "^3.0.3",
     "@gov.au/link-list": "^3.0.4",
-    "@gov.au/main-nav": "^1.0.1",
+    "@gov.au/main-nav": "^1.0.7",
     "@gov.au/page-alerts": "^2.1.1",
     "@gov.au/pancake": "^1.4.1",
     "@gov.au/pancake-js": "^1.2.1",
@@ -63,7 +63,7 @@
     "@gov.au/progress-indicator": "^3.1.5",
     "@gov.au/responsive-media": "^2.0.13",
     "@gov.au/select": "^2.0.9",
-    "@gov.au/side-nav": "^5.0.3",
+    "@gov.au/side-nav": "^5.0.7",
     "@gov.au/skip-link": "^2.0.11",
     "@gov.au/tags": "^3.1.5",
     "@gov.au/text-inputs": "^2.0.10"
