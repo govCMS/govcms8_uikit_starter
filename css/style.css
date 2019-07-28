@@ -3442,79 +3442,62 @@ html > body .au-select, x:-moz-any-link, x:default {
     text-decoration: none;
     color: #ffffff; }
 
-/*! @gov.au/tags v3.1.5 */
+/*! @gov.au/tags v4.0.0 */
 @media print {
-  .au-tags {
-    color: #000 !important; }
-  .au-tags__item {
-    border-color: #000 !important; }
-    .au-tags__item a {
-      color: #000 !important; } }
+  .au-tag {
+    color: #000 !important;
+    border-color: #000 !important; } }
 
-.au-tags {
+.au-tag {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
-  display: block;
-  margin: 0;
-  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color: #313131; }
-  .au-tags.au-tags--dark, .au-body--dark .au-tags {
-    color: #ffffff; }
-
-.au-tags > li {
-  margin: 8px 4px 0 0;
-  margin: 0.5rem 0.25rem 0 0;
   padding: 0 8px;
   padding: 0 0.5rem;
+  color: #313131;
   border: 1px solid #00698f;
   border-radius: 4px;
   display: inline-block; }
-  .au-tags > li > a,
-  .au-tags > li > button {
-    margin: 0 -8px;
-    margin: 0 -0.5rem;
-    padding: 0 8px;
-    padding: 0 0.5rem;
-    color: #00698f;
-    display: inline-block;
-    border-radius: 4px; }
-    .au-tags > li > a:hover,
-    .au-tags > li > button:hover {
-      color: #313131;
-      text-decoration: none;
-      background-color: whitesmoke; }
-    .au-tags > li > a:focus,
-    .au-tags > li > button:focus {
-      outline: 3px solid #9263DE;
-      outline-offset: 2px; }
-    .au-tags > li > a::-moz-focus-inner,
-    .au-tags > li > button::-moz-focus-inner {
-      border: 0; }
-    .au-tags > li > a:focus,
-    .au-tags > li > button:focus {
-      outline-offset: -1px; }
+  .au-tag.au-tag--dark, .au-body--dark .au-tag {
+    border-color: #61daff;
+    color: #ffffff; }
 
-.au-tags.au-tags--dark > li, .au-body--dark .au-tags > li {
-  border-color: #61daff; }
-  .au-tags.au-tags--dark > li > a, .au-body--dark .au-tags > li > a,
-  .au-tags.au-tags--dark > li > button,
-  .au-body--dark .au-tags > li > button {
+a.au-tag {
+  color: #00698f;
+  display: inline-block;
+  border-radius: 4px; }
+  a.au-tag:hover {
+    color: #313131;
+    text-decoration: none;
+    background-color: whitesmoke; }
+  a.au-tag:focus {
+    outline: 3px solid #9263DE;
+    outline-offset: 2px; }
+  a.au-tag::-moz-focus-inner {
+    border: 0; }
+  a.au-tag:focus {
+    outline-offset: -1px; }
+  a.au-tag.au-tag--dark, .au-body--dark a.au-tag {
     color: #61daff; }
-    .au-tags.au-tags--dark > li > a:hover, .au-body--dark .au-tags > li > a:hover,
-    .au-tags.au-tags--dark > li > button:hover,
-    .au-body--dark .au-tags > li > button:hover {
+    a.au-tag.au-tag--dark:hover, .au-body--dark a.au-tag:hover {
       color: #ffffff;
       background-color: #104f5f; }
-    .au-tags.au-tags--dark > li > a:focus, .au-body--dark .au-tags > li > a:focus,
-    .au-tags.au-tags--dark > li > button:focus,
-    .au-body--dark .au-tags > li > button:focus {
+    a.au-tag.au-tag--dark:focus, .au-body--dark a.au-tag:focus {
       outline: 3px solid #C390F9; }
-    .au-tags.au-tags--dark > li > a::-moz-focus-inner, .au-body--dark .au-tags > li > a::-moz-focus-inner,
-    .au-tags.au-tags--dark > li > button::-moz-focus-inner,
-    .au-body--dark .au-tags > li > button::-moz-focus-inner {
+    a.au-tag.au-tag--dark::-moz-focus-inner, .au-body--dark a.au-tag::-moz-focus-inner {
       border: 0; }
+
+.au-tag-list {
+  display: block;
+  margin: 0;
+  padding: 0; }
+  .au-tag-list li {
+    margin: 8px 4px 0 0;
+    margin: 0.5rem 0.25rem 0 0;
+    display: inline-block; }
+    .au-tag-list li > .au-tag:focus {
+      outline-offset: -1px; }
 
 /*! @gov.au/text-inputs v2.0.10 */
 @media print {
