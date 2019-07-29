@@ -36,7 +36,7 @@ services:
         - ls -al ${TUGBOAT_ROOT}
 
         - # Use the tugboat-specific Drupal settings
-        - # cp "${TUGBOAT_ROOT}/.tugboat/settings.php" "${DOCROOT}/sites/default/"
+        - cp "${TUGBOAT_ROOT}/.tugboat/settings.php" "${DOCROOT}/sites/default/"
 
         - # use the latest version of the theme branch as the default theme for testing
         - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
