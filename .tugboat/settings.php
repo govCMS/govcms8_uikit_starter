@@ -251,6 +251,9 @@ $databases = [];
  *   );
  * @endcode
  */
+$config_directories = array(
+  CONFIG_SYNC_DIRECTORY => '/var/lib/tugboat/config/sync',
+);
 
 /**
  * Settings:
