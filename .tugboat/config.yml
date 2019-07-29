@@ -79,6 +79,7 @@ services:
       build:
         - # use the latest version of the theme branch as the default theme for testing
         - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
+        - rm -rf ${DOCROOT}/themes/custom/govcms8_uikit_starter
         - git clone -b $TUGBOAT_PREVIEW https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         
         - drush -r "${DOCROOT}" cache-rebuild
