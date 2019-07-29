@@ -31,8 +31,8 @@ services:
         # Build the site
         
         - composer create-project govcms/govcms8-project govcms --stability dev --no-interaction
-        - cd "${TUGBOAT_ROOT}/drupal" && composer remove drupal/govcms8_uikit_starter
-        - ln -snf "${TUGBOAT_ROOT}/drupal/web" "${DOCROOT}"
+        - cd "${TUGBOAT_ROOT}/govcms" && composer remove drupal/govcms8_uikit_starter
+        - ln -snf "${TUGBOAT_ROOT}/govcms/web" "${DOCROOT}"
         - ls -al ${DOCROOT}
         - ls -al ${TUGBOAT_ROOT}
 
