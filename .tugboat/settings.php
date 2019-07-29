@@ -779,3 +779,7 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+
+if (PHP_SAPI === 'cli') {
+  ini_set('memory_limit', '256M');
+}
