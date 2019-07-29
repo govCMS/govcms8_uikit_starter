@@ -31,9 +31,9 @@ services:
         # Build the site
         
         - composer create-project govcms/govcms8-project govcms --stability dev --no-interaction
-        - cd "${TUGBOAT_ROOT}/govcms" && composer remove drupal/govcms8_uikit_starter
         - ln -snf "${TUGBOAT_ROOT}/govcms/web" "${DOCROOT}"
         - ls -al ${DOCROOT}
+        - ls -al /var/lib/tugboat/govcms/web
         - ls -al ${TUGBOAT_ROOT}
 
         - # Use the tugboat-specific Drupal settings
@@ -41,7 +41,7 @@ services:
 
         - # use the latest version of the theme branch as the default theme for testing
         - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
-        - git clone -b $TUGBOAT_GITHUB_BASE $TUGBOAT_GIT_REPO "${DOCROOT}/themes/custom/govcms8_uikit_starter"
+        - git clone -b $TUGBOAT_GITHUB_BASE https://github.com/tobybellwood/govcms8_uikit_starter.git "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         
         # Install the fresh GovCMS site and do not send email notification
         # - build/bin/phing -f build/phing/build.xml build:install
