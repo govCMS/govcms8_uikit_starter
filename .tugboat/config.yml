@@ -38,10 +38,6 @@ services:
         - # Use the tugboat-specific Drupal settings
         - cp "${TUGBOAT_ROOT}/.tugboat/settings.php" "${DOCROOT}/sites/default/"
 
-        - # use the latest version of the theme branch as the default theme for testing
-        - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
-        - git clone -b $TUGBOAT_PREVIEW https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
-        
         # Install the fresh GovCMS site and do not send email notification
         # - build/bin/phing -f build/phing/build.xml build:install
         - drush -r "${DOCROOT}" site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
@@ -81,6 +77,10 @@ services:
       # and update steps, because the results of those are inherited
       # from the base preview.
       build:
+        - # use the latest version of the theme branch as the default theme for testing
+        - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
+        - git clone -b $TUGBOAT_PREVIEW https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
+        
         - drush -r "${DOCROOT}" cache-rebuild
         - drush -r "${DOCROOT}" updb -y
 
