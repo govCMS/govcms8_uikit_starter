@@ -66,7 +66,7 @@
     "@gov.au/side-nav": "^5.0.3",
     "@gov.au/skip-link": "^2.0.16",
     "@gov.au/tags": "^3.1.5",
-    "@gov.au/text-inputs": "^2.0.10"
+    "@gov.au/text-inputs": "^2.1.1"
   },
   "pancake": {
     "auto-save": true,
