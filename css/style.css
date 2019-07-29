@@ -25,7 +25,7 @@ body {
  * @repository   https://github.com/dominikwilkowski/sass-versioning
  * @license      https://raw.githubusercontent.com/dominikwilkowski/sass-versioning/master/LICENSE GPL-3.0
  */
-/*! @gov.au/core v3.2.0 */
+/*! @gov.au/core v3.4.2 */
 /**
  * AU-replace - Replace a string with a string
  * http://codepen.io/jakob-e/pen/doMoML
@@ -381,12 +381,12 @@ body {
   list-style: none;
   padding: 0; }
 
-/*! @gov.au/body v2.0.13 */
+/*! @gov.au/body v2.2.0 */
 @media print {
   .au-body *, .au-body {
     text-shadow: none !important;
     color: #000 !important;
-    background: #fff !important;
+    background-color: transparent !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
     border-color: #000 !important; }
@@ -399,11 +399,6 @@ body {
   .au-body a[href^="javascript:"]:after,
   .au-body a[href^="#"]:after {
     content: "" !important; }
-  .au-body a[rel~='external']:after {
-    width: auto !important;
-    height: auto !important;
-    margin: auto !important;
-    background-image: none !important; }
   .au-body abbr[title]:after {
     content: " (" attr(title) ")"; }
   .au-body pre,
@@ -503,30 +498,10 @@ body {
   .au-body a {
     color: #00698f;
     text-decoration: underline;
-    -webkit-text-decoration-skip: ink;
-            text-decoration-skip: ink; }
-    .au-body a[rel~='external']:after {
-      content: ' ';
-      display: inline-block;
-      width: 0.7em;
-      height: 0.85em;
-      margin: 0 0.1em -0.02em 0.25em;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cpath fill='%2300698f' d='M24.002 8C15.155 8 8 15.164 8 24.002v79.996C8 112.845 15.164 120 24.002 120h79.996c8.847 0 16.002-7.164 16.002-16.002V82.005c0-1.107-.895-2.005-1.994-2.005h-12.012c-1.1 0-1.994.893-1.994 1.995v16.008c0 3.312-2.685 5.997-5.997 5.997H29.997C26.685 104 24 101.315 24 98.003V29.997C24 26.685 26.685 24 29.997 24h16.008C47.107 24 48 23.105 48 22.006V9.994C48 8.894 47.103 8 45.995 8H24.002z'/%3E%3Cpath fill='%2300698f' d='M127.416.584c-.36-.36-.86-.584-1.41-.584H73.994C72.904 0 72 .893 72 1.994v12.012c0 1.1.892 1.994 1.993 1.994H96L49.41 62.59c-.777.777-.774 2.046.01 2.83l13.16 13.16c.793.793 2.052.788 2.83.01L112 32v22.007c0 1.09.893 1.993 1.994 1.993h12.012c1.1 0 1.994-.892 1.994-1.993V1.993c0-.545-.223-1.043-.584-1.405V.584z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position-y: 0.12em; }
-      .ie8 .au-body a[rel~='external']:after,
-      .lt-ie8 .au-body a[rel~='external']:after {
-        content: '⇗';
-        color: #00698f; }
+    text-decoration-skip-ink: auto; }
     .au-body a:hover {
       color: #313131;
       text-decoration: none; }
-      .au-body a:hover[rel~='external']:after {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cpath fill='%23313131' d='M24.002 8C15.155 8 8 15.164 8 24.002v79.996C8 112.845 15.164 120 24.002 120h79.996c8.847 0 16.002-7.164 16.002-16.002V82.005c0-1.107-.895-2.005-1.994-2.005h-12.012c-1.1 0-1.994.893-1.994 1.995v16.008c0 3.312-2.685 5.997-5.997 5.997H29.997C26.685 104 24 101.315 24 98.003V29.997C24 26.685 26.685 24 29.997 24h16.008C47.107 24 48 23.105 48 22.006V9.994C48 8.894 47.103 8 45.995 8H24.002z'/%3E%3Cpath fill='%23313131' d='M127.416.584c-.36-.36-.86-.584-1.41-.584H73.994C72.904 0 72 .893 72 1.994v12.012c0 1.1.892 1.994 1.993 1.994H96L49.41 62.59c-.777.777-.774 2.046.01 2.83l13.16 13.16c.793.793 2.052.788 2.83.01L112 32v22.007c0 1.09.893 1.993 1.994 1.993h12.012c1.1 0 1.994-.892 1.994-1.993V1.993c0-.545-.223-1.043-.584-1.405V.584z'/%3E%3C/svg%3E"); }
-        .ie8 .au-body a:hover[rel~='external']:after,
-        .lt-ie8 .au-body a:hover[rel~='external']:after {
-          content: '⇗';
-          color: #313131; }
     .au-body a:focus {
       outline: 3px solid #9263DE;
       outline-offset: 2px; }
@@ -617,8 +592,7 @@ body {
             text-decoration-line: underline;
     -webkit-text-decoration-style: dashed;
             text-decoration-style: dashed;
-    -webkit-text-decoration-skip: ink;
-            text-decoration-skip: ink; }
+    text-decoration-skip-ink: auto; }
   .au-body dfn {
     font-style: normal; }
   .au-body abbr,
@@ -720,22 +694,8 @@ body {
       background-color: rgba(97, 218, 255, 0.75); }
     .au-body.au-body--dark a, .paragraph.color--dark a, .paragraph.color--dark-alt a {
       color: #61daff; }
-      .au-body.au-body--dark a[rel~='external']:after, .paragraph.color--dark a[rel~='external']:after, .paragraph.color--dark-alt a[rel~='external']:after {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cpath fill='%2361daff' d='M24.002 8C15.155 8 8 15.164 8 24.002v79.996C8 112.845 15.164 120 24.002 120h79.996c8.847 0 16.002-7.164 16.002-16.002V82.005c0-1.107-.895-2.005-1.994-2.005h-12.012c-1.1 0-1.994.893-1.994 1.995v16.008c0 3.312-2.685 5.997-5.997 5.997H29.997C26.685 104 24 101.315 24 98.003V29.997C24 26.685 26.685 24 29.997 24h16.008C47.107 24 48 23.105 48 22.006V9.994C48 8.894 47.103 8 45.995 8H24.002z'/%3E%3Cpath fill='%2361daff' d='M127.416.584c-.36-.36-.86-.584-1.41-.584H73.994C72.904 0 72 .893 72 1.994v12.012c0 1.1.892 1.994 1.993 1.994H96L49.41 62.59c-.777.777-.774 2.046.01 2.83l13.16 13.16c.793.793 2.052.788 2.83.01L112 32v22.007c0 1.09.893 1.993 1.994 1.993h12.012c1.1 0 1.994-.892 1.994-1.993V1.993c0-.545-.223-1.043-.584-1.405V.584z'/%3E%3C/svg%3E"); }
-        .ie8 .au-body.au-body--dark a[rel~='external']:after, .ie8 .paragraph.color--dark a[rel~='external']:after, .ie8 .paragraph.color--dark-alt a[rel~='external']:after,
-        .lt-ie8 .au-body.au-body--dark a[rel~='external']:after,
-        .lt-ie8 .paragraph.color--dark a[rel~='external']:after,
-        .lt-ie8 .paragraph.color--dark-alt a[rel~='external']:after {
-          color: #61daff; }
       .au-body.au-body--dark a:hover, .paragraph.color--dark a:hover, .paragraph.color--dark-alt a:hover {
         color: #ffffff; }
-        .au-body.au-body--dark a:hover[rel~='external']:after, .paragraph.color--dark a:hover[rel~='external']:after, .paragraph.color--dark-alt a:hover[rel~='external']:after {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cpath fill='%23ffffff' d='M24.002 8C15.155 8 8 15.164 8 24.002v79.996C8 112.845 15.164 120 24.002 120h79.996c8.847 0 16.002-7.164 16.002-16.002V82.005c0-1.107-.895-2.005-1.994-2.005h-12.012c-1.1 0-1.994.893-1.994 1.995v16.008c0 3.312-2.685 5.997-5.997 5.997H29.997C26.685 104 24 101.315 24 98.003V29.997C24 26.685 26.685 24 29.997 24h16.008C47.107 24 48 23.105 48 22.006V9.994C48 8.894 47.103 8 45.995 8H24.002z'/%3E%3Cpath fill='%23ffffff' d='M127.416.584c-.36-.36-.86-.584-1.41-.584H73.994C72.904 0 72 .893 72 1.994v12.012c0 1.1.892 1.994 1.993 1.994H96L49.41 62.59c-.777.777-.774 2.046.01 2.83l13.16 13.16c.793.793 2.052.788 2.83.01L112 32v22.007c0 1.09.893 1.993 1.994 1.993h12.012c1.1 0 1.994-.892 1.994-1.993V1.993c0-.545-.223-1.043-.584-1.405V.584z'/%3E%3C/svg%3E"); }
-          .ie8 .au-body.au-body--dark a:hover[rel~='external']:after, .ie8 .paragraph.color--dark a:hover[rel~='external']:after, .ie8 .paragraph.color--dark-alt a:hover[rel~='external']:after,
-          .lt-ie8 .au-body.au-body--dark a:hover[rel~='external']:after,
-          .lt-ie8 .paragraph.color--dark a:hover[rel~='external']:after,
-          .lt-ie8 .paragraph.color--dark-alt a:hover[rel~='external']:after {
-            color: #ffffff; }
       .au-body.au-body--dark a:focus, .paragraph.color--dark a:focus, .paragraph.color--dark-alt a:focus {
         outline: 3px solid #C390F9; }
       .au-body.au-body--dark a::-moz-focus-inner, .paragraph.color--dark a::-moz-focus-inner, .paragraph.color--dark-alt a::-moz-focus-inner {
@@ -772,7 +732,7 @@ body {
     .paragraph.color--dark-alt samp {
       background-color: #0a323c; }
 
-/*! @gov.au/link-list v3.0.4 */
+/*! @gov.au/link-list v3.0.8 */
 /**
  * Block of links.
  */
@@ -798,7 +758,7 @@ body {
     .au-link-list.au-link-list--inline > li {
       display: inline-block; }
 
-/*! @gov.au/breadcrumbs v3.0.3 */
+/*! @gov.au/breadcrumbs v3.0.5 */
 @media print {
   .au-breadcrumbs > .au-link-list > li:after {
     content: ">" !important;
@@ -843,7 +803,7 @@ body {
     .au-breadcrumbs.au-breadcrumbs--dark > .au-link-list > li:not(:last-child):after, .au-body--dark .au-breadcrumbs > .au-link-list > li:not(:last-child):after {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 128 128'%3E%3Cpath fill='%2389afb8' d='M128 64l-64 64-16-16 64-64'/%3E%3Cpath fill='%2389afb8' d='M128 64l-16 16-64-64L64 0'/%3E%3C/svg%3E"); }
 
-/*! @gov.au/buttons v3.0.5 */
+/*! @gov.au/buttons v3.0.7 */
 @media print {
   .au-btn {
     background-color: #fff !important;
@@ -1082,7 +1042,7 @@ a.au-btn {
             box-sizing: border-box;
     text-align: center; }
 
-/*! @gov.au/callout v3.0.1 */
+/*! @gov.au/callout v3.0.2 */
 @media print {
   .au-callout {
     border-left-width: 16px !important;
@@ -1178,7 +1138,7 @@ a.au-btn {
   margin-top: 8px;
   margin-top: 0.5rem; }
 
-/*! @gov.au/control-input v2.2.2 */
+/*! @gov.au/control-input v3.0.1 */
 /**
  * Return the right SVG shape for fore- and background
  *
@@ -1199,14 +1159,15 @@ a.au-btn {
   display: inline-block;
   position: relative; }
   .au-control-input.au-control-input--block {
-    margin-top: 16px;
-    margin-top: 1rem;
     display: block; }
     .au-control-input.au-control-input--block:before, .au-control-input.au-control-input--block:after {
       content: " ";
       display: table; }
     .au-control-input.au-control-input--block:after {
       clear: both; }
+    .au-control-input.au-control-input--block + .au-control-input--block {
+      margin-top: 16px;
+      margin-top: 1rem; }
 
 .au-control-input__input {
   position: absolute;
@@ -1224,33 +1185,33 @@ a.au-btn {
   .au-control-input__input + .au-control-input__text {
     cursor: pointer; }
   .au-control-input__input:invalid + .au-control-input__text {
-    background-color: #fff7f7; }
+    background-color: #fdf2f2; }
     .au-control-input__input:invalid + .au-control-input__text:after {
-      border-color: #ff635c; }
+      border-color: #d60000; }
   .au-control-input--invalid .au-control-input__input + .au-control-input__text {
-    background-color: #fff7f7; }
+    background-color: #fdf2f2; }
     .au-control-input--invalid .au-control-input__input + .au-control-input__text:after {
-      border-color: #ff635c; }
+      border-color: #d60000; }
   .au-control-input--dark .au-control-input__input:invalid + .au-control-input__text {
-    background-color: #365f6d; }
+    background-color: #30505f; }
   .au-control-input--dark.au-control-input--invalid .au-control-input__input + .au-control-input__text {
-    background-color: #365f6d; }
+    background-color: #30505f; }
   .au-control-input--alt.au-control-input--invalid .au-control-input__input + .au-control-input__text {
-    background-color: #f6dfde; }
+    background-color: #f0d0d0; }
   .au-control-input--dark.au-control-input--alt .au-control-input__input:invalid + .au-control-input__text {
-    background-color: #31464f; }
+    background-color: #2b3742; }
   .au-control-input--alt.au-control-input--dark.au-control-input--invalid .au-control-input__input + .au-control-input__text {
-    background-color: #31464f; }
+    background-color: #2b3742; }
   .au-control-input--valid .au-control-input__input + .au-control-input__text {
-    background-color: #f3fbf8; }
+    background-color: #f3faf8; }
     .au-control-input--valid .au-control-input__input + .au-control-input__text:after {
-      border-color: #0cac78; }
+      border-color: #0b996c; }
   .au-control-input--dark.au-control-input--valid .au-control-input__input + .au-control-input__text {
-    background-color: #126a71; }
+    background-color: #12676f; }
   .au-control-input--alt.au-control-input--valid .au-control-input__input + .au-control-input__text {
-    background-color: #d2eae2; }
+    background-color: #d2e7e0; }
   .au-control-input--alt.au-control-input--dark.au-control-input--valid .au-control-input__input + .au-control-input__text {
-    background-color: #0d5154; }
+    background-color: #0d4e52; }
   .au-control-input__input[type=radio] + .au-control-input__text:before,
   .au-control-input__input[type=radio] + .au-control-input__text:after {
     border-radius: 50%; }
@@ -1388,8 +1349,8 @@ a.au-btn {
       height: 28px;
       height: 1.75rem; }
   .au-control-input--small .au-control-input__text {
-    padding: 3px 8px 0 28px;
-    padding: 0.2rem 0.5rem 0 1.75rem;
+    padding: 3px 8px 0 31px;
+    padding: 0.2rem 0.5rem 0 1.95rem;
     margin-right: 16px;
     margin-right: 1rem;
     font-size: 16px;
@@ -1400,7 +1361,7 @@ a.au-btn {
   .au-control-input--dark .au-control-input__text {
     color: #ffffff; }
 
-/*! @gov.au/cta-link v2.1.5 */
+/*! @gov.au/cta-link v2.2.0 */
 @media print {
   .au-cta-link {
     color: #000 !important; }
@@ -1428,8 +1389,7 @@ a.au-btn {
   padding: 0;
   cursor: pointer;
   text-decoration: underline;
-  -webkit-text-decoration-skip: ink;
-          text-decoration-skip: ink; }
+  text-decoration-skip-ink: auto; }
   .au-cta-link:focus {
     outline: 3px solid #9263DE;
     outline-offset: 2px; }
@@ -1557,7 +1517,7 @@ a.au-btn {
 .au-direction-link--down:after {
   content: '↓'; }
 
-/*! @gov.au/footer v3.0.2 */
+/*! @gov.au/footer v3.0.5 */
 @media print {
   .au-footer {
     color: #000 !important;
@@ -1605,7 +1565,7 @@ a.au-btn {
 .au-footer--dark .au-footer__end {
   border-top: 1px solid #89afb8; }
 
-/*! @gov.au/grid-12 v2.0.9 */
+/*! @gov.au/grid-12 v2.1.0 */
 /**
  * Iterates through all 12 columns (≥2) to calculate the correct amount of left
  * and right padding for each of the classes.
@@ -2152,7 +2112,7 @@ a.au-btn {
   .au-grid .col-lg-offset-12 {
     margin-left: 100%; } }
 
-/*! @gov.au/header v4.1.7 */
+/*! @gov.au/header v4.1.12 */
 @media print {
   .au-header {
     background: #fff !important; }
@@ -2268,8 +2228,7 @@ a.au-header__brand {
     border: 0; }
   a.au-header__brand:hover .au-header__text {
     text-decoration: underline;
-    -webkit-text-decoration-skip: ink;
-            text-decoration-skip: ink; }
+    text-decoration-skip-ink: auto; }
   .au-header--dark a.au-header__brand, .au-body--dark .au-header a.au-header__brand {
     color: #ffffff; }
     .au-header--dark a.au-header__brand:focus, .au-body--dark .au-header a.au-header__brand:focus {
@@ -2307,7 +2266,7 @@ a.au-header__brand {
     margin-top: 12px;
     margin-top: 0.75rem; }
 
-/*! @gov.au/headings v2.0.9 */
+/*! @gov.au/headings v2.0.11 */
 /**
  * Basic styles for all headings
  */
@@ -2477,7 +2436,7 @@ a.au-header__brand {
   right: 0;
   font-weight: normal; }
 
-/*! @gov.au/keyword-list v3.0.3 */
+/*! @gov.au/keyword-list v3.0.5 */
 .au-keyword-list {
   font-size: 24px;
   font-size: 1.5rem;
@@ -2842,9 +2801,9 @@ a.au-header__brand {
  * Page alert success
  */
 .au-page-alerts--success {
-  border-color: #0cac78; }
+  border-color: #0b996c; }
   .au-page-alerts--success:before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230cac78' d='M0,0v24h24V0H0z M12,23C5.9,23,1,18.1,1,12C1,5.9,5.9,1,12,1s11,4.9,11,11C23,18.1,18.1,23,12,23z'/%3E%3C/svg%3E"); }
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230b996c' d='M0,0v24h24V0H0z M12,23C5.9,23,1,18.1,1,12C1,5.9,5.9,1,12,1s11,4.9,11,11C23,18.1,18.1,23,12,23z'/%3E%3C/svg%3E"); }
   .au-page-alerts--success:after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23313131' d='M10.4 16.9l-4.7-4.7 1.4-1.4 3.3 3.3 6.3-6.3 1.4 1.4z'/%3E%3C/svg%3E"); }
     .ie8 .au-page-alerts--success:after,
@@ -2872,9 +2831,9 @@ a.au-header__brand {
  * Page alert error.
  */
 .au-page-alerts--error {
-  border-color: #ff635c; }
+  border-color: #d60000; }
   .au-page-alerts--error:before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff635c' d='M0,0v24h24V0H0z M22.9,16.6L16.5,23H7.4L1,16.5V7.4L7.4,1h9.2l6.3,6.4V16.6z'/%3E%3C/svg%3E"); }
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d60000' d='M0,0v24h24V0H0z M22.9,16.6L16.5,23H7.4L1,16.5V7.4L7.4,1h9.2l6.3,6.4V16.6z'/%3E%3C/svg%3E"); }
   .au-page-alerts--error:after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23313131' d='M17 8.4L15.6 7 12 10.6 8.4 7 7 8.4l3.6 3.6L7 15.6 8.4 17l3.6-3.6 3.6 3.6 1.4-1.4-3.6-3.6z'/%3E%3C/svg%3E"); }
     .ie8 .au-page-alerts--error:after,
@@ -2896,7 +2855,7 @@ a.au-header__brand {
   clip: rect(0, 0, 0, 0);
   border: 0; }
 
-/*! @gov.au/progress-indicator v3.1.5 */
+/*! @gov.au/progress-indicator v3.1.7 */
 @media print {
   .au-progress-indicator {
     border-top-color: #000 !important; }
@@ -3075,7 +3034,7 @@ a.au-header__brand {
   .au-progress-indicator--dark .au-progress-indicator__status, .au-body--dark .au-progress-indicator .au-progress-indicator__status {
     color: #b8cfd4; }
 
-/*! @gov.au/responsive-media v2.0.13 */
+/*! @gov.au/responsive-media v2.0.14 */
 .au-responsive-media-vid {
   position: relative;
   display: block;
@@ -3109,7 +3068,7 @@ a.au-header__brand {
   margin-top: 16px;
   margin-top: 1rem; }
 
-/*! @gov.au/select v2.0.9 */
+/*! @gov.au/select v2.0.11 */
 @media print {
   .au-select {
     border-color: #000 !important;
@@ -3158,14 +3117,14 @@ a.au-header__brand {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     opacity: 0.3; }
   .au-select.au-select--dark:invalid, .au-select:invalid {
-    background-color: #fff7f7;
-    border-color: #ff635c; }
+    background-color: #fdf2f2;
+    border-color: #d60000; }
   .au-select.au-select--dark.au-select--invalid, .au-select.au-select--invalid {
-    background-color: #fff7f7;
-    border-color: #ff635c; }
+    background-color: #fdf2f2;
+    border-color: #d60000; }
   .au-select.au-select--dark.au-select--valid, .au-select.au-select--valid {
-    background-color: #f3fbf8;
-    border-color: #0cac78; }
+    background-color: #f3faf8;
+    border-color: #0b996c; }
   .ie8 .au-select:after,
   .ie9 .au-select:after {
     display: none; }
@@ -3396,7 +3355,7 @@ html > body .au-select, x:-moz-any-link, x:default {
       .au-side-nav.au-side-nav--dark.au-side-nav--alt a:hover {
         background-color: #0a323c; } }
 
-/*! @gov.au/skip-link v2.0.11 */
+/*! @gov.au/skip-link v2.0.16 */
 @media print {
   .au-skip-link__link {
     background: #fff !important; } }
@@ -3435,8 +3394,7 @@ html > body .au-select, x:-moz-any-link, x:default {
     color: #ffffff;
     background-color: #00698f;
     text-decoration: underline;
-    -webkit-text-decoration-skip: ink;
-            text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
     z-index: 600; }
   .au-body .au-skip-link__link:hover, .au-skip-link__link:hover {
     text-decoration: none;
@@ -3516,7 +3474,7 @@ html > body .au-select, x:-moz-any-link, x:default {
     .au-body--dark .au-tags > li > button::-moz-focus-inner {
       border: 0; }
 
-/*! @gov.au/text-inputs v2.0.10 */
+/*! @gov.au/text-inputs v2.1.1 */
 @media print {
   .au-text-input {
     border-color: #000 !important; }
@@ -3557,6 +3515,9 @@ html > body .au-select, x:-moz-any-link, x:default {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  width: 100%;
+  max-width: 205px;
+  max-width: 12.8125rem;
   /**
 	 * Block modifier
 	 */
@@ -3567,14 +3528,14 @@ html > body .au-select, x:-moz-any-link, x:default {
 	 * monospace.
 	 */ }
   .au-text-input.au-text-input--dark:invalid, .au-text-input:invalid {
-    background-color: #fff7f7;
-    border-color: #ff635c; }
+    background-color: #fdf2f2;
+    border-color: #d60000; }
   .au-text-input.au-text-input--dark.au-text-input--invalid, .au-text-input.au-text-input--invalid {
-    background-color: #fff7f7;
-    border-color: #ff635c; }
+    background-color: #fdf2f2;
+    border-color: #d60000; }
   .au-text-input.au-text-input--dark.au-text-input--valid, .au-text-input.au-text-input--valid {
-    background-color: #f3fbf8;
-    border-color: #0cac78; }
+    background-color: #f3faf8;
+    border-color: #0b996c; }
   .au-text-input[disabled] {
     cursor: not-allowed;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
@@ -3603,9 +3564,24 @@ html > body .au-select, x:-moz-any-link, x:default {
       outline: 3px solid #C390F9; }
     .au-text-input.au-text-input--dark::-moz-focus-inner {
       border: 0; }
+  .au-text-input.au-text-input--width-xs {
+    max-width: 69px;
+    max-width: 4.3rem; }
+  .au-text-input.au-text-input--width-sm {
+    max-width: 101px;
+    max-width: 6.3rem; }
+  .au-text-input.au-text-input--width-md {
+    max-width: 160px;
+    max-width: 10rem; }
+  .au-text-input.au-text-input--width-lg {
+    max-width: 288px;
+    max-width: 18rem; }
+  .au-text-input.au-text-input--width-xl {
+    max-width: 384px;
+    max-width: 24rem; }
   .au-text-input.au-text-input--block {
     display: block;
-    width: 100%;
+    max-width: 100%;
     -webkit-box-sizing: border-box;
             box-sizing: border-box; }
   .au-text-input.au-text-input--number {
@@ -3620,7 +3596,6 @@ textarea.au-text-input {
   font-size: 1rem;
   line-height: 1.5;
   height: auto;
-  max-width: 100%;
   min-height: 6em; }
 
 .au-body--dark .au-accordion .au-accordion__title,
