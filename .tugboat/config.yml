@@ -40,7 +40,7 @@ services:
 
         - # use the latest version of the theme branch as the default theme for testing
         - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
-        - git clone -b $TUGBOAT_GITHUB_BASE https://github.com/tobybellwood/govcms8_uikit_starter.git "${DOCROOT}/themes/custom/govcms8_uikit_starter"
+        - git clone -b $TUGBOAT_PREVIEW https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         
         # Install the fresh GovCMS site and do not send email notification
         # - build/bin/phing -f build/phing/build.xml build:install
