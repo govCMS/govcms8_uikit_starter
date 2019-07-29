@@ -251,7 +251,6 @@ $databases = [];
  *   );
  * @endcode
  */
-$config_directories = [];
 
 /**
  * Settings:
