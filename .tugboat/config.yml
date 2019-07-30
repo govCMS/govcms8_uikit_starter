@@ -42,6 +42,9 @@ services:
         # - build/bin/phing -f build/phing/build.xml build:install
         - drush -r "${DOCROOT}" site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
 
+        # Install the GovCMS default content
+        - drush -r "${DOCROOT}" pm-enable govcms8_default_content -y
+
       # Commands that import files, databases,  or other assets. When an
       # existing preview is refreshed, the build workflow starts here,
       # skipping the init step, because the results of that step will
