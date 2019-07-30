@@ -16,6 +16,7 @@ services:
     commands:
       # Commands that set up the basic preview infrastructure
       init:
+        - printenv
         - apt-get update
         # Install bz2 and zip extensions
         - apt-get install -y libbz2-dev
