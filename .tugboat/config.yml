@@ -30,7 +30,7 @@ services:
 
         # Build the site
         - pwd
-        - composer create-project govcms/govcms8-project govcms --stability dev --no-interaction --verbose
+        - composer create-project govcms/govcms8-project govcms --stability dev --no-interaction --verbose --no-dev
         - ln -snf "${TUGBOAT_ROOT}/govcms/docroot" "${DOCROOT}"
         - ls -al ${DOCROOT}
         - ls -al /var/lib/tugboat/govcms/docroot
