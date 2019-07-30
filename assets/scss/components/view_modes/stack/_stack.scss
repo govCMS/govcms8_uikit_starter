@@ -1,40 +1,44 @@
+/*
+* Stacks as Design system Card
+* In the beginning there were no Card, so we created a Stack. Then someone say
+* lets there be a card. We cannot remove the stack layout with markup for backward
+* compatibility. Instead we add card classes through preprocess and extend some
+* other to the original stack markup.
+ */
 .stack {
-  background: $white;
-  box-shadow: 0 0 20px $govcms8-color-shadow;
-  color: $AU-color-foreground-text;
+  // Can be removed once https://github.com/govau/design-system-components/issues/822 is done.
   height: 100%;
-
-  a {
-    color: $AU-color-foreground-action;
-  }
 }
 
 .stack__image {
-  a {
-    display: block;
-  }
-
   img {
     display: block;
     width: 100%;
   }
 }
 
+// Stack title is extended to Card title.
+.stack__title {
+  @extend .au-card__title;
+
+  .au-card--clickable & {
+    a {
+      @extend .au-card--clickable__link;
+    }
+  }
+}
+
+// Stack content is extened to Card inner.
 .stack__content {
-  @include AU-space(padding, 1unit);
+  @extend .au-card__inner;
 
   // All regions has one third unit gap between them.
   *[class^='stack__'] + *[class^='stack__'] {
     @include AU-space(margin-top, .3unit);
   }
-
-  // Title has a full unit gap bellow.
-  h3.stack__title {
-    @include AU-space(margin-bottom, 1unit);
-  }
 }
 
-// Stack looks the same on all backgrounds.
+// Stack/cards looks the same on all backgrounds.
 .au-body--alt,
 .au-body--dark,
 .au-body--dark.au-body--alt,
