@@ -29,7 +29,8 @@ services:
         - chmod +x /usr/local/bin/drush
 
         # Build the site
-        - composer create-project govcms/govcms8-project govcms --stability dev --no-interaction
+        - pwd
+        - composer create-project govcms/govcms8-project govcms --stability dev --no-interaction --verbose
         - ln -snf "${TUGBOAT_ROOT}/govcms/docroot" "${DOCROOT}"
         - ls -al ${DOCROOT}
         - ls -al /var/lib/tugboat/govcms/docroot
