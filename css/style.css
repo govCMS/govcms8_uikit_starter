@@ -3442,6 +3442,76 @@ html > body .au-select, x:-moz-any-link, x:default {
     text-decoration: none;
     color: #ffffff; }
 
+/*! @gov.au/table v0.2.0 */
+.au-table {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0; }
+  .au-table .au-table__caption {
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: bold;
+    text-align: left;
+    display: table-caption;
+    padding-bottom: 8px;
+    padding-bottom: 0.5rem; }
+  .au-table .au-table__head {
+    display: table-header-group;
+    border-bottom: 4px solid #BBB;
+    border-bottom: 0.25rem solid #BBB; }
+    .au-table .au-table__head .au-table__header {
+      text-align: left;
+      padding: 12px;
+      padding: 0.75rem; }
+      .au-table .au-table__head .au-table__header.au-table__header--width-10 {
+        width: 10%; }
+      .au-table .au-table__head .au-table__header.au-table__header--width-20 {
+        width: 20%; }
+      .au-table .au-table__head .au-table__header.au-table__header--width-25 {
+        width: 25%; }
+      .au-table .au-table__head .au-table__header.au-table__header--width-33 {
+        width: 33%; }
+      .au-table .au-table__head .au-table__header.au-table__header--width-50 {
+        width: 50%; }
+      .au-table .au-table__head .au-table__header.au-table__header--width-75 {
+        width: 75%; }
+      .au-table .au-table__head .au-table__header.au-table__header--numeric {
+        text-align: right; }
+      .au-table .au-table__head .au-table__header:focus {
+        outline: 3px solid #9263DE; }
+  .au-table .au-table__row {
+    display: table-row; }
+  .au-table .au-table__body {
+    display: table-row-group; }
+  .au-table .au-table__body .au-table__header {
+    padding: 12px;
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #c0c0c0;
+    font-weight: bold; }
+    .au-table .au-table__body .au-table__header:focus {
+      outline: 3px solid #9263DE; }
+  .au-table .au-table__cell {
+    padding: 12px;
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #c0c0c0; }
+    .au-table .au-table__cell:focus {
+      outline: 3px solid #9263DE; }
+    .au-table .au-table__cell.au-table__cell--numeric {
+      text-align: right;
+      font-variant: tabular-nums; }
+  .au-table.au-table--striped .au-table__body .au-table__row:nth-last-child(odd) {
+    background-color: #F2F2F2; }
+
+.au-table__wrapper {
+  overflow-x: auto; }
+
 /*! @gov.au/tags v3.1.5 */
 @media print {
   .au-tags {
