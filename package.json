@@ -67,7 +67,8 @@
     "@gov.au/select": "^2.0.9",
     "@gov.au/side-nav": "^5.0.7",
     "@gov.au/skip-link": "^2.0.11",
-    "@gov.au/tags": "^4.0.0",
+    "@gov.au/table": "^0.2.0",
+    "@gov.au/tags": "^3.1.5",
     "@gov.au/text-inputs": "^2.0.10"
   },
   "pancake": {
