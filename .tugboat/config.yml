@@ -89,6 +89,12 @@ services:
         
         - drush -r "${DOCROOT}" cache-rebuild
         - drush -r "${DOCROOT}" updb -y
+        
+      visualdiffs:
+        - /
+        - /test
+        - /blog/example
+        - /events
 
   # What to call the service hosting MySQL. This name also acts as the
   # hostname to access the service by from the php service.
