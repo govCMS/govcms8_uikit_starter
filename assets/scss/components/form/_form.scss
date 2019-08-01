@@ -1,0 +1,11 @@
+.webform-options-display-side-by-side .au-form-group + .au-form-group {
+  @include AU-space(margin-top, 0);
+}
+
+.au-form-group + .au-fieldset {
+  @include AU-space(margin-top, 1unit);
+}
+
+.au-fieldset + .au-fieldset {
+  @include AU-space(margin-top, 2unit);
+}

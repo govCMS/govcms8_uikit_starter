@@ -55,12 +55,15 @@
   title_display not in ['after', 'before'] ? 'form-no-label',
   disabled == 'disabled' ? 'form-disabled',
   errors ? 'form-item--error',
+  'au-form-group',
+  errors ? 'au-form-group--invalid',
 ]
 %}
 {%
   set description_classes = [
   'description',
   description_display == 'invisible' ? 'visually-hidden',
+  'au-hint-text',
 ]
 %}
 <div{{ attributes.addClass(classes) }}>
@@ -90,7 +93,7 @@
       {% endif %}
     </label>
     {% if errors %}
-      <div class="form-item--error-message">
+      <div class="form-item--error-message au-error-text">
         <strong>{{ errors }}</strong>
       </div>
     {% endif %}
@@ -121,7 +124,7 @@
       {{ label }}
     {% endif %}
     {% if errors %}
-      <div class="form-item--error-message">
+      <div class="form-item--error-message au-error-text">
         <strong>{{ errors }}</strong>
       </div>
     {% endif %}
