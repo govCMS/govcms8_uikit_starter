@@ -18,6 +18,7 @@ services:
         - /test
         - /blog/example
         - /events
+        - /themes/custom/govcms8_uikit_starter/styleguide/section-ui-kit.html
 
     # A set of commands to run while building this service
     commands:
