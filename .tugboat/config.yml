@@ -32,6 +32,10 @@ services:
         # Enable headers
         - a2enmod headers rewrite
 
+        # Install node10/npm to build source
+        - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+        - apt-get install -y nodejs
+
 #       # Install drush-launcher
         - wget -O /usr/local/bin/drush
           https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar
@@ -94,6 +98,10 @@ services:
         - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
         - rm -rf ${DOCROOT}/themes/custom/govcms8_uikit_starter
         - git clone -b $TUGBOAT_PREVIEW https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
+        
+        - cd "${DOCROOT}/themes/custom/govcms8_uikit_starter"
+        - npm run gulp
+        - npm run styleguide
         
         - drush -r "${DOCROOT}" cache-rebuild
         - drush -r "${DOCROOT}" updb -y
