@@ -100,6 +100,7 @@ services:
         - git clone -b $TUGBOAT_PREVIEW https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         
         - cd "${DOCROOT}/themes/custom/govcms8_uikit_starter"
+        - npm run setup
         - npm run gulp
         - npm run styleguide
         
