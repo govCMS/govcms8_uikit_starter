@@ -13,10 +13,11 @@ services:
     depends: mysql
 
     visualdiffs:
-      - /
-      - /test
-      - /blog/example
-      - /events
+      :default:
+        - /
+        - /test
+        - /blog/example
+        - /events
 
     # A set of commands to run while building this service
     commands:
