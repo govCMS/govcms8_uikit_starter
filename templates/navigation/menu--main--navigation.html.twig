@@ -30,11 +30,10 @@
 {%
   set main_nav_classes = [
   'au-main-nav',
-  main_nav_style ? main_nav_style,
 ]
 %}
 
-<nav {{ main_nav_attributes.addClass(main_nav_classes) }} aria-label="main navigation">
+<nav{{ main_nav_attributes.addClass(main_nav_classes) }} aria-label="main navigation">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -63,7 +62,11 @@
                   %}
                   {% set link_attributes = item.in_active_trail ? { 'aria-current': 'page' } %}
                   <li{{ item.attributes.addClass(classes) }}>
-                    {{ link(item.title, item.url, link_attributes) }}
+                    {% if link_attributes %}
+                      {{ link(item.title, item.url, link_attributes) }}
+                    {% else %}
+                      {{ link(item.title, item.url) }}
+                    {% endif %}
                   </li>
                 {% endfor %}
               </ul>
