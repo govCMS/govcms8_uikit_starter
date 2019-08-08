@@ -18,26 +18,7 @@
  *   - in_active_trail: TRUE if the link is in the active trail.
  */
 #}
-
-{# Attach UI-Kit libraries for the functionality. #}
-{{ attach_library('govcms8_uikit_starter/uikit-animate') }}
-{{ attach_library('govcms8_uikit_starter/uikit-accordion') }}
-
 {% import _self as menus %}
-
-{# Prepare side nav attributes. #}
-{% set side_nav_attributes = create_attribute() %}
-
-{# Add side nav classes. #}
-{%
-  set side_nav_classes = [
-  'au-side-nav',
-  'au-accordion',
-  side_nav_style ? side_nav_style,
-]
-%}
-
-<aside {{ side_nav_attributes.addClass(side_nav_classes) }} aria-label="side navigation">
   <button
     class="au-side-nav__toggle au-accordion__title au-accordion--closed"
     aria-controls="nav-default"
@@ -54,7 +35,6 @@
     {% endif %}
     {{ menus.menu_links(items, attributes) }}
   </div>
-</aside>
 
 {% macro menu_links(items, attributes) %}
   {% import _self as menus %}

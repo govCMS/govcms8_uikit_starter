@@ -23,64 +23,45 @@
 {{ attach_library('govcms8_uikit_starter/uikit-animate') }}
 {{ attach_library('govcms8_uikit_starter/uikit-main-nav') }}
 
-{# Prepare main nav attributes. #}
-{% set main_nav_attributes = create_attribute() %}
-
-{# Add main nav classes. #}
-{%
-  set main_nav_classes = [
-  'au-main-nav',
-  main_nav_style ? main_nav_style,
-]
-%}
-
-<nav{{ main_nav_attributes.addClass(main_nav_classes) }} aria-label="main navigation">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div id="main-nav-default" class="au-main-nav__content">
-          <button
-            aria-controls="main-nav-default"
-            class="au-main-nav__toggle au-main-nav__toggle--open"
-            onClick="return AU.mainNav.Toggle( this )">
-            Menu
-          </button>
-          <div class="au-main-nav__menu">
-            <div class="au-main-nav__menu-inner">
-              <div class="au-main-nav__focus-trap-top"></div>
-              <button
-                aria-controls="main-nav-default"
-                class="au-main-nav__toggle au-main-nav__toggle--close"
-                onClick="return AU.mainNav.Toggle( this )">
-                Close
-              </button>
-              <ul class="au-link-list">
-                {% for item in items %}
-                  {%
-                    set classes = [
-                    item.in_active_trail ? 'active',
-                  ]
-                  %}
-                  {% set link_attributes = item.in_active_trail ? { 'aria-current': 'page' } %}
-                  <li{{ item.attributes.addClass(classes) }}>
-                    {% if link_attributes %}
-                      {{ link(item.title, item.url, link_attributes) }}
-                    {% else %}
-                      {{ link(item.title, item.url) }}
-                    {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-              <div class="au-main-nav__focus-trap-bottom"></div>
-            </div>
-          </div>
-          <div
-            class="au-main-nav__overlay"
-            aria-controls="main-nav-default"
-            onClick="return AU.mainNav.Toggle( this )">
-          </div>
-        </div>
-      </div>
+<div id="main-nav-default" class="au-main-nav__content">
+  <button
+    aria-controls="main-nav-default"
+    class="au-main-nav__toggle au-main-nav__toggle--open"
+    onClick="return AU.mainNav.Toggle( this )">
+    Menu
+  </button>
+  <div class="au-main-nav__menu">
+    <div class="au-main-nav__menu-inner">
+      <div class="au-main-nav__focus-trap-top"></div>
+      <button
+        aria-controls="main-nav-default"
+        class="au-main-nav__toggle au-main-nav__toggle--close"
+        onClick="return AU.mainNav.Toggle( this )">
+        Close
+      </button>
+      <ul class="au-link-list">
+        {% for item in items %}
+          {%
+            set classes = [
+            item.in_active_trail ? 'active',
+          ]
+          %}
+          {% set link_attributes = item.in_active_trail ? { 'aria-current': 'page' } %}
+          <li{{ item.attributes.addClass(classes) }}>
+            {% if link_attributes %}
+              {{ link(item.title, item.url, link_attributes) }}
+            {% else %}
+              {{ link(item.title, item.url) }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="au-main-nav__focus-trap-bottom"></div>
     </div>
   </div>
-</nav>
+  <div
+    class="au-main-nav__overlay"
+    aria-controls="main-nav-default"
+    onClick="return AU.mainNav.Toggle( this )">
+  </div>
+</div>

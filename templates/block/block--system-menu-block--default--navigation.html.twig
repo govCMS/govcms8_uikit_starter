@@ -31,37 +31,39 @@
  * http://www.w3.org/TR/WCAG-TECHS/H42.html for more information.
  */
 #}
-{# Attach UI-Kit libraries for the functionality. #}
-{{ attach_library('govcms8_uikit_starter/uikit-animate') }}
-{{ attach_library('govcms8_uikit_starter/uikit-accordion') }}
 {# Add main nav classes. #}
 {%
   set classes = [
-  'au-side-nav',
-  'au-accordion',
-  side_nav_style ? side_nav_style,
+  'au-main-nav',
+  main_nav_style ? main_nav_style,
 ]
 %}
 {% if attributes.id %}
   {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 {% endif %}
 {% if not hide_title and heading_id %}
-<nav aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby').addClass(classes) }} aria-label="side navigation">
+  <nav aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby').addClass(classes) }} aria-label="main navigation">
 {% else %}
-<nav{{ attributes|without('role').addClass(classes) }} aria-label="side navigation">
-  {% endif %}
-  {# Label. If not displayed, we still provide it for screen readers. #}
-  {% if not configuration.label_display %}
-    {% set title_attributes = title_attributes.addClass('visually-hidden') %}
-  {% endif %}
-  {{ title_prefix }}
-  {% if not hide_title and heading_id %}
-    <h2{{ title_attributes.setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
+  <nav{{ attributes|without('role').addClass(classes) }} aria-label="main navigation">
+{% endif %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        {# Label. If not displayed, we still provide it for screen readers. #}
+        {% if not configuration.label_display %}
+          {% set title_attributes = title_attributes.addClass('visually-hidden') %}
+        {% endif %}
+        {{ title_prefix }}
+        {% if not hide_title and heading_id %}
+          <h2{{ title_attributes.setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
+        {% endif %}
+        {{ title_suffix }}
 
-  {# Menu. #}
-  {% block content %}
-    {{ content }}
-  {% endblock %}
+        {# Menu. #}
+        {% block content %}
+          {{ content }}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
 </nav>
