@@ -1,3 +1,10 @@
+accessible_megamenu:
+  js:
+    js/accessible_mega_menu.js: {}
+    js/accessible_mega_menu_apply.js: {}
+  dependencies:
+    - core/jquery
+
 global-styling:
   version: 1.x
   css:
@@ -10,7 +17,6 @@ highlighted-layouts:
   css:
     theme:
       css/highlighted_layouts.css: {}
-
 
 uikit-animate:
   version: 1.0.2
