@@ -1,0 +1,16 @@
+.megamenu-toggle {
+  @include AU-media( sm ) {
+    display: none;
+  }
+  &[aria-expanded="false"] {
+    @extend .au-main-nav__toggle, .au-main-nav__toggle--open;
+  }
+  &[aria-expanded="true"] {
+    @extend  .au-main-nav__toggle, .au-main-nav__toggle--close;
+
+    // Display menu items according to megamenu toggle state.
+    ~ .au-link-list {
+      display: block;
+    }
+  }
+}

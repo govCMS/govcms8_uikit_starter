@@ -1,0 +1,347 @@
+// Global namespace to limit this styling only to megamenu.
+.megamenu {
+  // Desktop styling.
+  @include AU-media(sm) {
+    // First descendant link within a top level navigation item.
+    .menu-item > a {
+      position: relative;
+    }
+
+    // Open state of first descendant link within a top level navigation item.
+    .menu-item > a.open {
+      z-index: 1;
+    }
+  }
+
+  // Hide main menu by default.
+  .au-link-list {
+    display: none;
+
+    // Display menu on bigger breakpoints.
+    @include AU-media(md) {
+      display: block;
+    }
+
+    // Show the subnav if
+    .sub-nav {
+      display: none;
+
+      &.open {
+        display: block;
+      }
+    }
+
+    // Add caret to items with submenu.
+    > .menu-item--expanded {
+      > a {
+        &:after {
+          @include AU-space(margin-left, 0.125unit);
+          @include AU-space(border-top, 0.25unit solid);
+          @include AU-space(border-left, 0.25unit solid transparent);
+          @include AU-space(border-right, 0.25unit solid transparent);
+          content: '';
+          display: inline-block;
+          width: 0;
+          height: 0;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+// Reset styling for descriptions.
+.menu-item--has-description,
+.sub-nav__title--has-description {
+  display: block;
+  position: relative;
+
+  .sub-nav &:hover {
+    background: $AU-color-background-shade;
+  }
+
+  .sub-nav.au-main-nav--alt &:hover {
+    background: $AU-color-background-alt-shade;
+  }
+
+  .sub-nav.au-main-nav--dark &:hover {
+    background: $AU-colordark-background-shade;
+  }
+  .sub-nav.au-main-nav--dark.au-main-nav--alt &:hover {
+    background: $AU-colordark-background-alt-shade;
+  }
+
+  .menu-item__description,
+  .sub-nav__title__description {
+    @include AU-space(font-size, 1unit);
+    @include AU-space(margin-top, -1unit);
+    max-width: none;
+  }
+}
+
+// Make the whole item clickable with single link.
+.menu-item--has-description {
+  a:after {
+    content: "";
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+// Sub-nav title has the clickable area before as it has CTA link after.
+.sub-nav__title--has-description {
+  a:before {
+    content: "";
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+// Sub-navigation panel.
+.sub-nav {
+  @include AU-space(padding, 0.5unit);
+  background-color: #fff;
+  box-shadow: 0 0 20px $govcms8-color-shadow;
+  display: none;
+  position: absolute;
+  z-index: 100;
+
+  // Sub-navigation panel open state.
+  &.open {
+    display: block;
+  }
+
+  // List item within sub-navigation panel.
+  li {
+    list-style-type: none;
+  }
+
+  // List of items within sub-navigation panel.
+  .sub-nav__menu {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+
+    //---- IE10 and IE11 ----//
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+    }
+
+    //---- MS Edge Browser CSS Start ----
+    @supports (-ms-ime-align: auto) {
+      list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+    }
+  }
+
+  .sub-nav__title {
+    // Remove unnecessary gap from CTA link.
+    a {
+      @include AU-fontgrid(md, heading);
+      margin-top: 0;
+    }
+  }
+
+  .sub-nav__title--has-description {
+    .sub-nav__title__description {
+      @include AU-space(padding-left, 1unit);
+      @include AU-space(padding-bottom, 1unit);
+    }
+  }
+
+  .sub-nav__menu-1 {
+    > .menu-item {
+      > a,
+      > .menu-item--has-description > a {
+        font-weight: bold;
+      }
+    }
+    .menu-item__description {
+      @include AU-space(padding-left, 1unit);
+      @include AU-space(padding-bottom, 1unit);
+    }
+  }
+
+  .sub-nav__menu-2 {
+    .menu-item {
+      a {
+        @include AU-fontgrid(xs);
+        @include AU-space(padding, 0.5unit 1unit);
+      }
+
+      .menu-item__description {
+        @include AU-fontgrid(xs);
+        @include AU-space(padding-bottom, 0.5unit);
+        @include AU-space(margin-top, -0.5unit);
+      }
+    }
+  }
+
+  // Forth level has padding from left.
+  .sub-nav__menu-3 {
+    .menu-item {
+      a {
+        @include AU-space(padding-left, 2unit);
+      }
+
+      .menu-item__description {
+        @include AU-space(padding-left, 2unit);
+        @include AU-space(margin-top, -0.5unit);
+      }
+    }
+  }
+
+  .au-main-nav--dark & {
+    @extend .au-body--dark;
+  }
+}
+
+// Styling for megamenus.
+.megamenu--megamenu,
+.megamenu--overview {
+  // Make the sub-nav span the whole menu width.
+  .sub-nav {
+    @include AU-space(margin-top, 0.5unit);
+    left: 0;
+    right: 0;
+
+    // Align sub-nav menus next to each other.
+    > .sub-nav__menu {
+      @include AU-space(max-height, 20unit);
+      overflow: auto;
+
+      @include AU-media(sm) {
+        max-height: inherit;
+        display: flex;
+      }
+    }
+  }
+
+  // Column variants.
+  // Two columns.
+  &.megamenu--columns-2 {
+    .sub-nav__menu-1 {
+      .sub-nav__group {
+        @include AU-media(sm) {
+          width: 50%;
+
+          &:nth-child(n+3) {
+            > a,
+            > .menu-item--has-description > a {
+              @include AU-space(margin-top, 1.8 unit);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Three columns.
+  &.megamenu--columns-3 {
+    .sub-nav__menu-1 {
+      .sub-nav__group {
+        @include AU-media(sm) {
+          width: 33.33333%;
+
+          &:nth-child(n+4) {
+            > a,
+            > .menu-item--has-description > a {
+              @include AU-space(margin-top, 1.8 unit);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Four columns.
+  &.megamenu--columns-4 {
+    .sub-nav__menu-1 {
+      .sub-nav__group {
+        @include AU-media(sm) {
+          width: 25%;
+
+          &:nth-child(n+5) {
+            > a,
+            > .menu-item--has-description > a {
+              @include AU-space(margin-top, 1.8 unit);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Five columns.
+  &.megamenu--columns-5 {
+    .sub-nav__menu-1 {
+      .sub-nav__group {
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 25%;
+
+          &:nth-child(n+5) {
+            > a,
+            > .menu-item--has-description > a {
+              @include AU-space(margin-top, 1.8unit);
+            }
+          }
+        }
+
+        @media (min-width: 992px) {
+          width: 20%;
+
+          &:nth-child(n+6) {
+            > a,
+            > .menu-item--has-description > a {
+              @include AU-space(margin-top, 1.8unit);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Six columns.
+  &.megamenu--columns-6 {
+    .sub-nav__menu-1 {
+      .sub-nav__group {
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 25%;
+
+          &:nth-child(n+5) {
+            > a,
+            > .menu-item--has-description > a {
+              @include AU-space(margin-top, 1.8unit);
+            }
+          }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+          width: 20%;
+
+          &:nth-child(n+6) {
+            > a,
+            > .menu-item--has-description > a {
+              @include AU-space(margin-top, 1.8unit);
+            }
+          }
+        }
+
+        @include AU-media( lg ) {
+          width: 16.66666%;
+
+          &:nth-child(n+7) {
+            > a,
+            > .menu-item--has-description > a {
+              @include AU-space(margin-top, 1.8unit);
+            }
+          }
+        }
+      }
+    }
+  }
+}
