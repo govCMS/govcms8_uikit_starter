@@ -100,6 +100,60 @@ function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStat
     '#description' => t('Set the width for logo in pixels.'),
     '#default_value' => theme_get_setting('logo_width'),
   ];
+
+  $form['primary_navigation'] = [
+    '#type' => 'details',
+    '#title' => t('Primary navigation'),
+    '#open' => TRUE,
+    '#weight' => -500,
+  ];
+
+  $form['primary_navigation']['menu_style'] = [
+    '#type' => 'radios',
+    '#title' => t('Type'),
+    '#options' => [
+      'theme__menu-style--default' => t('Simple (mobile slide out) – 1 level'),
+      'theme__menu-style--simple' => t('Simple (mobile open down) – 1 level'),
+      'theme__menu-style--dropdown' => t('Dropdown – up to 3 levels'),
+      'theme__menu-style--megamenu' => t('Megamenu – up to 4 levels'),
+      'theme__menu-style--overview' => t('Megamenu (description first level) – up to 4 levels'),
+      'theme__menu-style--description' => t('Megamenu (descriptions all levels) – up to 4 levels'),
+    ],
+    '#description' => t('Select the type of menu to use for the Primary Navigation. "Description" option uses the standard Drupal menu items description field.'),
+    '#default_value' => theme_get_setting('menu_style'),
+  ];
+
+  $trip_states = [
+    'visible' => [
+      ':input[name="menu_style"]' => [
+        'value' => 'theme__menu-style--megamenu',
+      ],
+    ],
+  ];
+
+  $form['primary_navigation']['megamenu_columns'] = [
+    '#type' => 'radios',
+    '#title' => t('Megamenu columns'),
+    '#options' => [
+      'theme__megamenu-columns--2' => t('Two columns'),
+      'theme__megamenu-columns--3' => t('Three columns'),
+      'theme__megamenu-columns--4' => t('Four columns'),
+      'theme__megamenu-columns--5' => t('Five columns'),
+      'theme__megamenu-columns--6' => t('Six columns'),
+    ],
+    '#description' => t('In to how many columns should the items be sorted.'),
+    '#default_value' => theme_get_setting('megamenu_columns'),
+    '#states' => [
+      // Display only if menu_style is set to megamenu, overview or description.
+      'visible' => [
+        'input[name="menu_style"]' => [
+          ['value' => 'theme__menu-style--megamenu'],
+          ['value' => 'theme__menu-style--overview'],
+          ['value' => 'theme__menu-style--description'],
+        ],
+      ],
+    ],
+  ];
 }
 
 /**
@@ -150,14 +204,6 @@ function govcms8_uikit_starter_form_alter(&$form, FormStateInterface $form_state
 }
 
 function govcms8_uikit_starter_preprocess_menu(&$variables) {
-  $theme_settings_mappings = [
-    'side_nav_style' => [
-      'theme__side_nav--dark' => 'au-body--dark au-side-nav--dark',
-      'theme__side_nav--alt' => 'au-body--alt au-side-nav--alt',
-      'theme__side_nav--dark-alt' => 'au-body--dark au-side-nav--dark au-side-nav--alt',
-    ],
-  ];
-
   if (!empty($variables['items'])) {
     // Find the active link and apply a flag.
     $current_path = \Drupal::request()->getRequestUri();
@@ -180,13 +226,6 @@ function govcms8_uikit_starter_preprocess_menu(&$variables) {
     }
   }
 
-  govcms8_uikit_starter_theme_settings_mappings($variables, $theme_settings_mappings);
-}
-
-/**
- * Implements hook_preprocess_main__menu().
- */
-function govcms8_uikit_starter_preprocess_menu__main(&$variables) {
   $theme_settings_mappings = [
     'main_nav_style' => [
       'theme__main_nav--dark' => 'au-body--dark au-main-nav--dark',
@@ -206,6 +245,23 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
       'theme__local-task--dark' => 'au-body--dark',
       'theme__local-task--alt' => 'au-body--alt',
       'theme__local-task--dark-alt' => 'au-body--dark au-body--alt',
+    ],
+    'main_nav_style' => [
+      'theme__main_nav--dark' => 'au-body--dark au-main-nav--dark',
+      'theme__main_nav--alt' => 'au-body--alt au-main-nav--alt',
+      'theme__main_nav--dark-alt' => 'au-body--dark au-main-nav--dark au-main-nav--alt',
+    ],
+    'side_nav_style' => [
+      'theme__side_nav--dark' => 'au-body--dark au-side-nav--dark',
+      'theme__side_nav--alt' => 'au-body--alt au-side-nav--alt',
+      'theme__side_nav--dark-alt' => 'au-body--dark au-side-nav--dark au-side-nav--alt',
+    ],
+    'megamenu_columns' => [
+      'theme__megamenu-columns--2' => 'megamenu--columns-2',
+      'theme__megamenu-columns--3' => 'megamenu--columns-3',
+      'theme__megamenu-columns--4' => 'megamenu--columns-4',
+      'theme__megamenu-columns--5' => 'megamenu--columns-5',
+      'theme__megamenu-columns--6' => 'megamenu--columns-6',
     ],
   ];
   govcms8_uikit_starter_theme_settings_mappings($variables, $theme_settings_mappings);
@@ -247,11 +303,43 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
 }
 
 /**
+ * Implements hook_theme_suggestions_HOOK_alter() for block templates.
+ *
+ * @param array $suggestions
+ * @param array $variables
+ */
+function govcms8_uikit_starter_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Block suggestions for custom block bundles.
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+  // Prepare theme suggestion for system menu block
+  // according to theme settings and region.
+  if (isset($variables['elements']['#id']) && $variables['elements']['#id'] === 'govcms8_uikit_starter_mainnavigation') {
+    $block = Block::load($variables['elements']['#id']);
+    $menu_style = theme_get_setting('menu_style');
+
+    if (!empty($menu_style)) {
+      $menu_style_name = explode('theme__menu-style--', $menu_style);
+      $suggestions[] = $variables['theme_hook_original']
+                       . '__system_menu_block__' . $menu_style_name[1] . '__' . $block->getRegion();
+    }
+  }
+}
+
+/**
  * Implements hook_theme_suggestions_menu_alter().
  */
 function govcms8_uikit_starter_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
-  if (isset($variables["attributes"]["data-region"])) {
-    $suggestions[] = $variables["theme_hook_original"] . "__" . $variables["attributes"]["data-region"];
+  if (isset($variables['attributes']['data-region'])) {
+    $suggestions[] = $variables["theme_hook_original"] . "__" . $variables['attributes']['data-region'];
+  }
+
+  // Prepare theme suggestion for menu according to theme settings.
+  $menu_style = theme_get_setting('menu_style');
+  if ($menu_style && (isset($variables['attributes']['data-region']))) {
+    $menu_style_name = explode('theme__menu-style--', $menu_style);
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $menu_style_name[1] . '__' . $variables['attributes']['data-region'];
   }
 }
 
