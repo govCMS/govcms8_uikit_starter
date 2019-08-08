@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * Theme override for a menu block Simple.
+#}
+{% extends '@govcms8_uikit_starter/megamenu/megamenu_base.html.twig' %}
+{% block menu %}
+  {% set megamenu_classes = megamenu_classes | merge(['megamenu--simple']) %}
+
+  {{ parent() }}
+{% endblock %}
