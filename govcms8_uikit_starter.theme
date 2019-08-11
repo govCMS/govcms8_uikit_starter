@@ -318,12 +318,15 @@ function govcms8_uikit_starter_theme_suggestions_block_alter(array &$suggestions
   if (isset($variables['elements']['#id']) && $variables['elements']['#id'] === 'govcms8_uikit_starter_mainnavigation') {
     $block = Block::load($variables['elements']['#id']);
     $menu_style = theme_get_setting('menu_style');
-
-    if (!empty($menu_style)) {
-      $menu_style_name = explode('theme__menu-style--', $menu_style);
-      $suggestions[] = $variables['theme_hook_original']
-                       . '__system_menu_block__' . $menu_style_name[1] . '__' . $block->getRegion();
+    // If no menu style is selected in theme settings we provide the default.
+    if (empty($menu_style)) {
+      $menu_style = 'theme__menu-style--default';
     }
+    $menu_style_name = str_replace('theme__menu-style--', '', $menu_style);
+    $suggestions[] = $variables['theme_hook_original']
+                     . '__system_menu_block__' . $menu_style_name;
+    $suggestions[] = $variables['theme_hook_original']
+                     . '__system_menu_block__' . $menu_style_name . '__' . $block->getRegion();
   }
 }
 
@@ -337,9 +340,14 @@ function govcms8_uikit_starter_theme_suggestions_menu_alter(array &$suggestions,
 
   // Prepare theme suggestion for menu according to theme settings.
   $menu_style = theme_get_setting('menu_style');
+  // If no menu style is selected in theme settings we provide the default.
+  if (empty($menu_style)) {
+    $menu_style = 'theme__menu-style--default';
+  }
   if ($menu_style && (isset($variables['attributes']['data-region']))) {
-    $menu_style_name = explode('theme__menu-style--', $menu_style);
-    $suggestions[] = $variables['theme_hook_original'] . '__' . $menu_style_name[1] . '__' . $variables['attributes']['data-region'];
+    $menu_style_name = str_replace('theme__menu-style--', '', $menu_style);
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $menu_style_name;
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $menu_style_name . '__' . $variables['attributes']['data-region'];
   }
 }
 

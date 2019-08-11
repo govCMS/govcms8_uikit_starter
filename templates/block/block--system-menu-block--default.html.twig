@@ -31,7 +31,7 @@
  * http://www.w3.org/TR/WCAG-TECHS/H42.html for more information.
  */
 #}
-{# This template is used if in the navigation region. #}
+{# This template is used regarldes of a region. #}
 {# Add main nav classes. #}
 {%
   set classes = [
@@ -43,28 +43,22 @@
   {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 {% endif %}
 {% if not hide_title and heading_id %}
-  <nav aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby').addClass(classes) }} aria-label="main navigation">
-{% else %}
+<nav aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby').addClass(classes) }} aria-label="main navigation">
+  {% else %}
   <nav{{ attributes|without('role').addClass(classes) }} aria-label="main navigation">
-{% endif %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {# Label. If not displayed, we still provide it for screen readers. #}
-        {% if not configuration.label_display %}
-          {% set title_attributes = title_attributes.addClass('visually-hidden') %}
-        {% endif %}
-        {{ title_prefix }}
-        {% if not hide_title and heading_id %}
-          <h2{{ title_attributes.setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
-        {% endif %}
-        {{ title_suffix }}
+    {% endif %}
+    {# Label. If not displayed, we still provide it for screen readers. #}
+    {% if not configuration.label_display %}
+      {% set title_attributes = title_attributes.addClass('visually-hidden') %}
+    {% endif %}
+    {{ title_prefix }}
+    {% if not hide_title and heading_id %}
+      <h2{{ title_attributes.setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
 
-        {# Menu. #}
-        {% block content %}
-          {{ content }}
-        {% endblock %}
-      </div>
-    </div>
-  </div>
-</nav>
+    {# Menu. #}
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </nav>
