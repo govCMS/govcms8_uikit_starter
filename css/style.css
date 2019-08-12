@@ -2493,7 +2493,7 @@ a.au-header__brand {
   .au-keyword-list--dark .au-keyword-list__small, .au-body--dark .au-keyword-list .au-keyword-list__small {
     color: #ffffff; }
 
-/*! @gov.au/main-nav v1.0.1 */
+/*! @gov.au/main-nav v1.0.7 */
 @media print {
   .au-main-nav {
     background: transparent !important;
@@ -2556,8 +2556,7 @@ a.au-header__brand {
     .au-main-nav a:hover,
     .au-main-nav .au-main-nav__toggle:hover {
       text-decoration: underline;
-      -webkit-text-decoration-skip: ink;
-              text-decoration-skip: ink;
+      text-decoration-skip-ink: auto;
       color: #313131;
       background-color: whitesmoke; }
   .au-main-nav a {
@@ -3177,7 +3176,7 @@ html > body .au-select, x:-moz-any-link, x:default {
     padding-right: 36px;
     padding-right: 2.25rem; } }
 
-/*! @gov.au/side-nav v5.0.3 */
+/*! @gov.au/side-nav v5.0.7 */
 /**
  * AU-side-nav-indent - Mixin for creating indent based off depth
  *
@@ -3224,8 +3223,7 @@ html > body .au-select, x:-moz-any-link, x:default {
     text-decoration: none; }
     .au-side-nav a:hover {
       text-decoration: underline;
-      -webkit-text-decoration-skip: ink;
-              text-decoration-skip: ink;
+      text-decoration-skip-ink: auto;
       background-color: #e0e0e0; }
     .au-side-nav a:focus {
       outline: 3px solid #9263DE;
@@ -3246,8 +3244,7 @@ html > body .au-select, x:-moz-any-link, x:default {
     color: #00698f;
     font-weight: normal;
     text-decoration: underline;
-    -webkit-text-decoration-skip: ink;
-            text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
     background-color: inherit; }
     .au-side-nav .au-accordion__title:hover {
       text-decoration: none; }
