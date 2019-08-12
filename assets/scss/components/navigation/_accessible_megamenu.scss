@@ -214,7 +214,7 @@
       @include AU-space(max-height, 20unit);
       overflow: auto;
 
-      @include AU-media(sm) {
+      @include AU-media(md) {
         max-height: inherit;
         display: flex;
       }

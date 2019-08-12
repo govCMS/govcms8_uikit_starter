@@ -4182,7 +4182,7 @@ textarea.au-text-input {
     max-height: 320px;
     max-height: 20rem;
     overflow: auto; }
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
       .megamenu--megamenu .sub-nav > .sub-nav__menu,
       .megamenu--overview .sub-nav > .sub-nav__menu {
         max-height: inherit;
