@@ -15,8 +15,8 @@ jobs:
       - run: composer lint || true
 
       - run: npm run setup
-      - run: node_modules/.bin/gulp js-lint || true
-      - run: node_modules/.bin/gulp
+      - run: npm run js-lint || true
+      - run: npm run gulp
       - run: npm run styleguide
 
       - run:
