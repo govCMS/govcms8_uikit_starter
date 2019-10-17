@@ -1,4 +1,5 @@
 # GovCMS 8 UI-Kit Starter
+[![CircleCI](https://circleci.com/gh/govcms/govcms8_uikit_starter.svg?style=svg)](https://circleci.com/gh/govcms/govcms8_uikit_starter)
 
 This theme implements UI Kit into GovCMS. It makes use of the templates provided 
 in govcms8_uikit and extends them to work with Drupal. It also provide styling 
