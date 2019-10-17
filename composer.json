@@ -5,6 +5,10 @@
     "license": "GPL-2.0+",
     "require": {
     },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5",
+        "drupal/coder": "^8.2.12"
+    },
     "repositories": {
         "drupal": {
             "type": "composer",
@@ -19,5 +23,8 @@
         },
         "process-timeout": 0,
         "sort-packages": true
+    },
+    "scripts": {
+        "lint": "phpcs --colors --ignore=vendor,node_modules,css,js --standard=Drupal,DrupalPractice ."
     }
 }
