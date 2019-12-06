@@ -27,7 +27,7 @@ services:
         - printenv
         - apt-get update
         # Install bz2 and zip extensions
-        - apt-get install -y libbz2-dev
+        - apt-get install -y libbz2-dev libzip-dev
         - docker-php-ext-install opcache bz2 zip
         # Enable headers
         - a2enmod headers rewrite
