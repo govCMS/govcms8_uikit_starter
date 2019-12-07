@@ -33,7 +33,7 @@ var configLocal = require('./config-local.json');
 // Process CSS for production.
 gulp.task('css', function() {
   var postcssPlugins = [
-    autoprefixer('last 2 versions', '> 1%', 'ie 10')
+    autoprefixer()
   ];
 
   return gulp.src(config.css.src)
@@ -58,7 +58,7 @@ gulp.task('css', function() {
 // Process CSS for development.
 gulp.task('css_dev', function() {
   var postcssPlugins = [
-    autoprefixer('last 2 versions', '> 1%', 'ie 10')
+    autoprefixer()
   ];
 
   return gulp.src(config.css.src)

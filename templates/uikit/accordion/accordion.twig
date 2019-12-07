@@ -16,19 +16,19 @@
   <section class="au-accordion">
 
     {% if orientation == 'open' %}
-      <a href="#accordion-{{ id }}" class="au-accordion__title"
-         aria-expanded="true" aria-selected="true" aria-controls="accordion-{{ id }}" onclick="return AU.accordion.Toggle( this{{ speed }} )">{{ title }}</a>
+      <button class="au-accordion__title"
+              aria-expanded="true" aria-controls="accordion-{{ id }}" onclick="return AU.accordion.Toggle( this{{ speed }} )">{{ title }}</button>
 
-      <div class="au-accordion__body" aria-hidden="false" id="accordion-{{ id }}">
+      <div class="au-accordion__body" id="accordion-{{ id }}">
         <div class="au-accordion__body-wrapper">{{ body }}</div>
       </div>
 
     {% else %}
 
-      <a href="#accordion-{{ id }}" class="au-accordion__title au-accordion--closed"
-         aria-expanded="false" aria-selected="false" aria-controls="accordion-{{ id }}" onclick="return AU.accordion.Toggle( this{{ speed }} )">{{ title }}</a>
+      <button class="au-accordion__title au-accordion--closed"
+              aria-expanded="false" aria-controls="accordion-{{ id }}" onclick="return AU.accordion.Toggle( this{{ speed }} )">{{ title }}</button>
 
-      <div class="au-accordion__body au-accordion--closed" aria-hidden="true" id="accordion-{{ id }}">
+      <div class="au-accordion__body au-accordion--closed" id="accordion-{{ id }}">
         <div class="au-accordion__body-wrapper">{{ body }}</div>
       </div>
 
