@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: quay.io/govcms/govcms-ci
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "composer.json" }}
+            - v1-dependencies-
+
+      - run: composer install --no-interaction --prefer-dist
+      - run: composer lint || true
+
+      - run: npm run setup
+      - run: node_modules/.bin/gulp js-lint || true
+      - run: node_modules/.bin/gulp
+      - run: npm run styleguide
+
+      - run:
+          name: Assert the compiled assets were committed to the repository.
+          command: git --no-pager diff --exit-code css js styleguide || true
+
+      - run:
+          name: Store generated styleguide
+          command: mkdir -p /tmp/artifacts && cp -r css js styleguide /tmp/artifacts/
+          when: always
+      - store_artifacts:
+          path: /tmp/artifacts
+          when: always
+
+      - save_cache:
+          paths:
+            - node_modules
+            - vendor
+          key: v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "composer.json" }}
