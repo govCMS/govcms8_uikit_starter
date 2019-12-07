@@ -41,23 +41,22 @@ services:
           https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar
         - chmod +x /usr/local/bin/drush
 
-        # Build the site
-        - pwd
-        - COMPOSER_MEMORY_LIMIT=-1 composer create-project govcms/govcms8-project govcms --stability dev --no-interaction --verbose
-        - ln -snf "${TUGBOAT_ROOT}/govcms/docroot" "${DOCROOT}"
-        - ls -al ${DOCROOT}
-        - ls -al /var/lib/tugboat/govcms/docroot
-        - ls -al ${TUGBOAT_ROOT}
+        # Tell the GovCMS project to use this "tugboat-latest" tag above to build GovCMS distro in the scaffold.
+        - rm -Rf /var/govcms
+        - COMPOSER_MEMORY_LIMIT=-1 composer create-project govcms/govcms8-project --stability dev --no-interaction --verbose /var/govcms
+        - ln -snf "/var/govcms/docroot" "${DOCROOT}"
 
-        - # Use the tugboat-specific Drupal settings
-        - cp "${TUGBOAT_ROOT}/.tugboat/settings.php" "${DOCROOT}/sites/default/"
+        # Prepare for install.
+        - cp "${TUGBOAT_ROOT}/.tugboat/settings.php" /var/govcms/docroot/sites/default/
+        - mkdir -p "/var/govcms/docroot/sites/default/files"
+        - chgrp -R www-data "/var/govcms/docroot/sites/default/files"
+        - find "/var/govcms/docroot/sites/default/files" -type d -exec chmod 2775 {} \;
+        - find "/var/govcms/docroot/sites/default/files" -type f -exec chmod 0664 {} \;
 
-        # Install the fresh GovCMS site and do not send email notification
-        # - build/bin/phing -f build/phing/build.xml build:install
-        - drush -r "${DOCROOT}" site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
-
-        # Install the GovCMS default content
-        - drush -r "${DOCROOT}" pm-enable govcms8_default_content -y
+        # Install the site.
+        - rm -rf /var/govcms/docroot/profiles/govcms/config/sync # In some cases the sync directory is created and a re-install fails.
+        - cd /var/govcms && drush -r "${DOCROOT}" site:install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
+        - cd /var/govcms && drush -r "${DOCROOT}" pm:enable govcms8_default_content -y
 
       # Commands that import files, databases,  or other assets. When an
       # existing preview is refreshed, the build workflow starts here,
@@ -96,12 +95,8 @@ services:
       build:
         - # use the latest version of the theme branch as the default theme for testing
         - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
-        - rm -rf ${DOCROOT}/themes/custom/govcms8_uikit_starter
-        - GIT_BRANCH="${TUGBOAT_GITHUB_HEAD:-$TUGBOAT_PREVIEW}"
-        - set | grep GIT
-        - export GIT_BRANCH
-        - printenv 
-        - git clone -b ${GIT_BRANCH} https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
+        - ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}/themes/custom/govcms8_uikit_starter" 
+
         - cd "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         - git log --oneline -1
         
