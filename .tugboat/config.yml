@@ -98,6 +98,8 @@ services:
         - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
         - rm -rf ${DOCROOT}/themes/custom/govcms8_uikit_starter
         - GIT_BRANCH="${TUGBOAT_GITHUB_HEAD:-$TUGBOAT_PREVIEW}"
+        - set | grep GIT
+        - export GIT_BRANCH
         - printenv 
         - git clone -b ${GIT_BRANCH} https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         - cd "${DOCROOT}/themes/custom/govcms8_uikit_starter"
