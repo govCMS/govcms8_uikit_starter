@@ -1,1 +1,3 @@
-{% include '@govcms8_uikit_starter/inc/list.twig' %}
+{% set listTemplate = directory ~ '/templates/inc/list.twig' %}
+{% set defaultListTemplate = '@govcms8_uikit_starter/inc/list.twig' %}
+{% include [listTemplate, defaultListTemplate] %}

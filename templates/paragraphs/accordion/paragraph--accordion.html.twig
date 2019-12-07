@@ -56,14 +56,16 @@
   {{ attach_library('govcms8_uikit_starter/uikit-animate') }}
   {{ attach_library('govcms8_uikit_starter/uikit-accordion') }}
 
-{%
-  include '@govcms8_uikit/accordion/accordion.twig' with {
-  id: accordion_item_id,
-  title: content.field_heading.0,
-  body: content.field_accordion_body.0,
-  orientation: orientation,
-  speed: speed
-} only
-%}
+  {% set accordionTemplate = directory ~ '/templates/uikit/accordion/accordion.twig' %}
+  {% set defaultAccordionTemplate = '@govcms8_uikit_starter/uikit/accordion/accordion.twig' %}
+  {%
+    include [accordionTemplate, defaultAccordionTemplate] with {
+      id: accordion_item_id,
+      title: content.field_heading.0,
+      body: content.field_accordion_body.0,
+      orientation: orientation,
+      speed: speed
+    } only
+  %}
 
 {% endblock %}
