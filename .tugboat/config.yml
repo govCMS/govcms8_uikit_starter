@@ -1,0 +1,113 @@
+services:
+  php:
+    # Use PHP 7.2 with Apache to serve the Drupal site
+    image: tugboatqa/php:7.3-apache
+
+    # Set this as the default service. This does a few things
+    #   1. Clones the git repository into the service container
+    #   2. Exposes port 80 to the Tugboat HTTP proxy
+    #   3. Routes requests to the preview URL to this service
+    default: true
+
+    # Wait until the mysql service is done building
+    depends: mysql
+
+    visualdiffs:
+      :default:
+        - /
+        - /test
+        - /blog/example
+        - /events
+        - /themes/custom/govcms8_uikit_starter/styleguide/section-ui-kit.html
+
+    # A set of commands to run while building this service
+    commands:
+      # Commands that set up the basic preview infrastructure
+      init:
+        - printenv
+        - apt-get update
+        # Install bz2 and zip extensions
+        - apt-get install -y libbz2-dev libzip-dev
+        - docker-php-ext-install opcache bz2 zip
+        # Enable headers
+        - a2enmod headers rewrite
+
+        # Install node10/npm to build source
+        - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+        - apt-get install -y nodejs
+
+#       # Install drush-launcher
+        - wget -O /usr/local/bin/drush
+          https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar
+        - chmod +x /usr/local/bin/drush
+
+        # Install a vanilla govcms-project site under /var/govcms and link it to DOCROOT.
+        - rm -Rf /var/govcms
+        - COMPOSER_MEMORY_LIMIT=-1 composer create-project govcms/govcms8-project --stability dev --no-interaction --verbose /var/govcms
+        - ln -snf "/var/govcms/docroot" "${DOCROOT}"
+
+        # Prepare for install.
+        - cp "${TUGBOAT_ROOT}/.tugboat/settings.php" /var/govcms/docroot/sites/default/
+        - mkdir -p "/var/govcms/docroot/sites/default/files"
+        - chgrp -R www-data "/var/govcms/docroot/sites/default/files"
+        - find "/var/govcms/docroot/sites/default/files" -type d -exec chmod 2775 {} \;
+        - find "/var/govcms/docroot/sites/default/files" -type f -exec chmod 0664 {} \;
+
+        # Install the site.
+        - rm -rf /var/govcms/docroot/profiles/govcms/config/sync # In some cases the sync directory is created and a re-install fails.
+        - cd /var/govcms && drush -r "${DOCROOT}" site:install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
+        - cd /var/govcms && drush -r "${DOCROOT}" pm:enable govcms8_default_content -y
+      
+        # Cuts down on image size, although makes initial preview loading slower.
+        - cd /var/govcms && drush -r "${DOCROOT}" cr -y
+
+      # Commands that import files, databases,  or other assets. When an
+      # existing preview is refreshed, the build workflow starts here,
+      # skipping the init step, because the results of that step will
+      # already be present.
+      update:
+        # We have no external assets to update for testing the distro.
+
+      build:
+        # use this latest version of the theme branch as the default theme for testing
+        - rm -rf ${DOCROOT}/themes/contrib/govcms8_uikit_starter
+        - mkdir -p "${DOCROOT}/themes/custom"
+        - ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}/themes/custom/govcms8_uikit_starter" 
+
+        # double check version in use
+        - cd "${DOCROOT}/themes/custom/govcms8_uikit_starter"
+        - git log --oneline -1
+        
+        # rebuild all assets
+        - npm run setup
+        - npm run gulp
+        - npm run styleguide
+        
+        - drush -r "${DOCROOT}" cache-rebuild
+        - drush -r "${DOCROOT}" updb -y
+        
+      visualdiffs:
+        - /
+        - /test
+        - /blog/example
+        - /events
+
+  # What to call the service hosting MySQL. This name also acts as the
+  # hostname to access the service by from the php service.
+  mysql:
+    # Use the latest available 5.x version of MySQL
+    image: tugboatqa/mysql:5
+
+    # A set of commands to run while building this service
+    commands:
+      # Commands that import files, databases,  or other assets. When an
+      # existing preview is refreshed, the build workflow starts here,
+      # skipping the init step, because the results of that step will
+      # already be present.
+      update:
+        # Copy a database dump from an external server. The public
+        # SSH key found in the Tugboat Repository configuration must be
+        # copied to the external server in order to use scp.
+        # - scp user@example.com:database.sql.gz /tmp/database.sql.gz
+        # - zcat /tmp/database.sql.gz | mysql tugboat
+        # - rm /tmp/database.sql.gz

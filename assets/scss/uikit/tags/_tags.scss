@@ -1,14 +1,15 @@
 // UI-Kit Tags
 //
 // Tags to apply a taxonomy and link to similar content.
+// For single tag use the @govcms8_uikit/tags/tag.twig.
 //
 // Markup: tags.twig
 //
 // Style guide: UI-Kit.tags
 //
 
-.au-body--dark .au-tags {
-  @extend .au-tags.au-tags--dark !optional;
+.au-body--dark .au-tag {
+  @extend .au-tag.au-tag--dark !optional;
 }
 
 .au-tags {

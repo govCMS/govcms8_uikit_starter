@@ -10,7 +10,7 @@
  * - messages: [array] The messages. Each item in the array is a string.
  */
 #}
-<div class="au-body au-page-alerts {{ modifier_class }}" {% if heading %}aria-label="{{ heading }}"{% endif %} {{ attributes }} role="alert">
+<div class="au-body au-page-alerts {{ modifier_class }}" {{ attributes }}>
   {% block heading %}
     {% if heading %}
       <h3 class="visually-hidden">{{ heading }}</h3>

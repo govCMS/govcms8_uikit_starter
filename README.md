@@ -1,4 +1,5 @@
 # GovCMS 8 UI-Kit Starter
+[![CircleCI](https://circleci.com/gh/govcms/govcms8_uikit_starter.svg?style=svg)](https://circleci.com/gh/govcms/govcms8_uikit_starter)
 
 This theme implements UI Kit into GovCMS. It makes use of the templates provided 
 in govcms8_uikit and extends them to work with Drupal. It also provide styling 
@@ -13,7 +14,7 @@ for the layout templates and modifiers from _govcms8_foundations_ module.
 
 ### Production setup
 
-* run command `gulp`
+* run command `npm run gulp`
 
 **This will produce:**
 * compressed CSS output
@@ -22,7 +23,7 @@ for the layout templates and modifiers from _govcms8_foundations_ module.
 
 ### Development setup
 
-* run command `gulp dev`
+* run command `npm run gulp dev`
 
 **This will produce:**
 * nested CSS output
@@ -33,7 +34,7 @@ for the layout templates and modifiers from _govcms8_foundations_ module.
 
 ### JS Linting
 
-* run command `gulp js-lint`
+* run command `npm run js-lint`
 
 This will check for common errors in your JS files.
 Its not a part of the watch task.
