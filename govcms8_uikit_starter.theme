@@ -128,21 +128,6 @@ function govcms8_uikit_starter_preprocess_page(&$variables) {
 }
 
 /**
- * Implements template_preprocess_layout().
- */
-function govcms8_uikit_starter_preprocess_layout(&$variables) {
-  /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
-  $layout = $variables['layout'];
-  // Only if current layout is inside "GovCMS8 Layouts" module.
-  if ($layout->getProvider() === 'govcms8_layouts') {
-    // Set "has_page_layout" flag into static variable storage.
-    if (substr($layout->id(), 0, 5) === 'page_') {
-      drupal_static('govcms8_layouts_page', TRUE);
-    }
-  }
-}
-
-/**
  * Implements hook_form_alter().
  */
 function govcms8_uikit_starter_form_alter(&$form, FormStateInterface $form_state) {
@@ -323,6 +308,13 @@ function govcms8_uikit_starter_preprocess_layout(&$variables) {
     ) {
       // Add au-card--clickable class to Card.
       $variables['attributes']['class'][] = 'au-card--clickable';
+    }
+  };
+  // Only if current layout is inside "GovCMS8 Layouts" module.
+  if ($layout->getProvider() === 'govcms8_layouts') {
+    // Set "has_page_layout" flag into static variable storage.
+    if (substr($layout->id(), 0, 5) === 'page_') {
+      drupal_static('govcms8_layouts_page', TRUE);
     }
   }
 }
