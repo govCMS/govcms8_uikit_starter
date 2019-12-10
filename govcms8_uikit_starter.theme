@@ -5,9 +5,9 @@
  * GovCMS 8 UI-Kit Starter main theme file.
  */
 
+use Drupal\block\Entity\Block;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatch;
-use Drupal\block\Entity\Block;
 
 /**
  * Implements hook_form_system_theme_settings_alter().
@@ -15,9 +15,9 @@ use Drupal\block\Entity\Block;
 function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
   // Create a section for My Theme settings.
   $form['govcms8_uikit_starter_settings'] = [
-    '#type'         => 'details',
-    '#title'        => t('Custom Settings'),
-    '#description'  => t('Configure GovCMS 8 UI-Kit Starter options'),
+    '#type' => 'details',
+    '#title' => t('Custom Settings'),
+    '#description' => t('Configure GovCMS 8 UI-Kit Starter options'),
     '#weight' => -1000,
     '#open' => TRUE,
   ];
@@ -32,7 +32,7 @@ function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStat
   $form['govcms8_uikit_starter_settings']['header_style'] = [
     '#type' => 'select',
     '#title' => t('Header style'),
-    '#options'       => [
+    '#options' => [
       '' => t('-none-'),
       'theme__header--dark' => t('Dark'),
       'theme__header--alt' => t('Alt'),
@@ -45,7 +45,7 @@ function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStat
   $form['govcms8_uikit_starter_settings']['main_nav_style'] = [
     '#type' => 'select',
     '#title' => t('Main navigation style'),
-    '#options'       => [
+    '#options' => [
       '' => t('-none-'),
       'theme__main_nav--dark' => t('Dark'),
       'theme__main_nav--alt' => t('Alt'),
@@ -58,7 +58,7 @@ function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStat
   $form['govcms8_uikit_starter_settings']['side_nav_style'] = [
     '#type' => 'select',
     '#title' => t('Side navigation style'),
-    '#options'       => [
+    '#options' => [
       '' => t('-none-'),
       'theme__side_nav--dark' => t('Dark'),
       'theme__side_nav--alt' => t('Alt'),
@@ -71,7 +71,7 @@ function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStat
   $form['govcms8_uikit_starter_settings']['footer_style'] = [
     '#type' => 'select',
     '#title' => t('Footer style'),
-    '#options'       => [
+    '#options' => [
       '' => t('-none-'),
       'theme__footer--dark' => t('Dark'),
       'theme__footer--alt' => t('Alt'),
@@ -84,7 +84,7 @@ function govcms8_uikit_starter_form_system_theme_settings_alter(&$form, FormStat
   $form['govcms8_uikit_starter_settings']['local_task_style'] = [
     '#type' => 'select',
     '#title' => t('Local task style'),
-    '#options'       => [
+    '#options' => [
       '' => t('-none-'),
       'theme__local-task--dark' => t('Dark'),
       'theme__local-task--alt' => t('Alt'),
@@ -149,6 +149,9 @@ function govcms8_uikit_starter_form_alter(&$form, FormStateInterface $form_state
   }
 }
 
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function govcms8_uikit_starter_preprocess_menu(&$variables) {
   $theme_settings_mappings = [
     'side_nav_style' => [
@@ -172,10 +175,10 @@ function govcms8_uikit_starter_preprocess_menu(&$variables) {
         $parent_link = $menu_link_manager->createInstance($parent_link_id);
         $parent_title = $parent_link->getTitle();
         $parent_url = $parent_link->getUrlObject();
-        $variables['parent_link'] = array(
+        $variables['parent_link'] = [
           "title" => $parent_title,
           "url" => $parent_url,
-        );
+        ];
       }
     }
   }
@@ -210,7 +213,8 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
   ];
   govcms8_uikit_starter_theme_settings_mappings($variables, $theme_settings_mappings);
 
-  // Prepare a variable for logo width to be used in the branding block template.
+  // Prepare a variable for logo width to be used in the branding block
+  // template.
   $logo_width = theme_get_setting('logo_width');
   if ($logo_width) {
     $variables['theme__logo_width'] = $logo_width . 'px';
@@ -222,7 +226,7 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
   // Add a region variable to a block.
   if (isset($variables["elements"]["#id"])) {
     $block_id = $variables["elements"]["#id"];
-    $block = \Drupal\block\Entity\Block::load($block_id);
+    $block = Block::load($block_id);
 
     if ($block) {
       if (empty($variables["content"]["#type"]) || $variables["content"]["#type"] !== "form") {
@@ -234,14 +238,14 @@ function govcms8_uikit_starter_preprocess_block(&$variables) {
   // Hide title on Main Menu.
   if (isset($variables["elements"]["#id"])) {
     if ($variables["elements"]["#id"] === "govcms8_uikit_starter_mainnavigation") {
-      $variables["hide_title"] = true;
+      $variables["hide_title"] = TRUE;
     }
   }
 
   // Hide title on sidebar menus.
   if (isset($variables["content"]["#menu_block_configuration"])) {
     if ($variables["content"]["#menu_block_configuration"]["region"] === "sidebar") {
-      $variables["hide_title"] = true;
+      $variables["hide_title"] = TRUE;
     }
   }
 }
@@ -260,7 +264,6 @@ function govcms8_uikit_starter_theme_suggestions_menu_alter(array &$suggestions,
  *
  * @param array $variables
  *   Theme variables array.
- *
  * @param array $theme_settings_mappings
  *   Array of mapping.
  */
@@ -279,15 +282,15 @@ function govcms8_uikit_starter_theme_settings_mappings(array &$variables, array 
  *
  * @param array $links
  *   Link array.
- *
- * @param $path
+ * @param string $path
  *   Path to check.
  */
-function govcms8_uikit_starter_theme_find_active_link(&$links, $path) {
+function govcms8_uikit_starter_theme_find_active_link(array &$links, $path) {
   foreach ($links as &$item) {
     if ($item['url']->toString() === $path) {
       $item['is_active'] = TRUE;
-    } elseif (!empty($item['below'])) {
+    }
+    elseif (!empty($item['below'])) {
       govcms8_uikit_starter_theme_find_active_link($item['below'], $path);
     }
   }

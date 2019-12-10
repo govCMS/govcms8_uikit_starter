@@ -12,16 +12,16 @@ jobs:
             - v1-dependencies-
 
       - run: composer install --no-interaction --prefer-dist
-      - run: composer lint || true
+      - run: composer lint
 
       - run: npm run setup
-      - run: npm run js-lint || true
+      - run: npm run js-lint
       - run: npm run gulp
       - run: npm run styleguide
 
       - run:
           name: Assert the compiled assets were committed to the repository.
-          command: git --no-pager diff --exit-code css js styleguide || true
+          command: git --no-pager diff --exit-code css js styleguide
 
       - run:
           name: Store generated styleguide

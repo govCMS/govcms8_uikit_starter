@@ -25,6 +25,6 @@
         "sort-packages": true
     },
     "scripts": {
-        "lint": "phpcs --colors --ignore=vendor,node_modules,css,js --standard=Drupal,DrupalPractice ."
+        "lint": "phpcs --colors --ignore=vendor,node_modules,css,js,.tugboat --standard=Drupal,DrupalPractice ."
     }
 }
