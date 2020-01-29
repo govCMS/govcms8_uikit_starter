@@ -1,10 +1,12 @@
 // Search block.
 
-form#views-exposed-form-content-search-page-1 {
+form#views-exposed-form-content-search-page-1,
+form#views-exposed-form-solr-search-page-1 {
   display: flex;
 
   // This is the text input wrapper.
-  .form-item-keys {
+  .form-item-keys,
+  .form-item-fulltext-search {
     display: block;
     width: 100%;
     flex: 1 1 100%;
