@@ -3,6 +3,7 @@ description: 'Starter theme with basic implementation of GovCMS 8 UI-Kit. Clonin
 
 core: 8.x
 type: theme
+base theme: stable
 libraries:
   - govcms8_uikit_starter/global-styling
 regions:
