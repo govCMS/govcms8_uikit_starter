@@ -48,7 +48,7 @@
   'au-grid',
   'layout-container',
   theme__highlighted_layouts ? theme__highlighted_layouts,
-  is_panelized ? 'is-panelized',
+  has_page_layout ? 'has-page-layout',
 ]
 %}
 
@@ -74,8 +74,8 @@
     </div>
   {% endif %}
 
-  {# Page title and breadcrumbs for all pages except the panelized ones. #}
-  {% if not is_panelized %}
+  {# Page title and breadcrumbs for all pages except the ones using GovCMS8 Layouts page layout. #}
+  {% if not has_page_layout %}
     {% if page.content_top|render|striptags|trim is not empty %}
       <div class="content-top">
         <div class="container">
@@ -89,15 +89,14 @@
   <main>
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
-    {# Template for panelized node pages. #}
-    {% if is_panelized %}
+    {# Template for node pages using GovCMS8 Layouts page layout. #}
+    {% if has_page_layout %}
       <div class="main-content">
         {{ page.content }}
       </div>{# /.layout-content #}
 
     {% else %}
-      {# Default layout for all pages except the panelized ones, with optional sidebar. #}
-
+      {# Default layout for all pages except the ones using GovCMS8 Layouts page layout, with optional sidebar. #}
       <div class="container">
 
         {% if page.sidebar|render|striptags|trim %}

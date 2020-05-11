@@ -48,15 +48,15 @@
   }
 }
 
-// Add space above footer region for all pages except the panelized ones.
-.au-body:not(.is-panelized) {
+// Add space above footer region for all pages except the ones using GovCMS8 Layouts page layout.
+.au-body:not(.has-page-layout) {
   .au-footer {
     @include AU-space(margin-top, 2unit);
   }
 }
 
-// Add space below content region for all panelized pages except the edgy.
-.au-body.is-panelized .page-layout:not(.page-layout--edgy) {
+// Add space below content region for all pages using GovCMS8 Layouts page layout except the edgy.
+.au-body.has-page-layout .page-layout:not(.page-layout--edgy) {
   @include AU-space(margin-bottom, 2unit);
 }
 
