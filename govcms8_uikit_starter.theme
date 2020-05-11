@@ -125,6 +125,8 @@ function govcms8_uikit_starter_preprocess_page(&$variables) {
 
   // Set flag saying if current page is using any page layout.
   $variables['has_page_layout'] = drupal_static('govcms8_layouts_page', FALSE);
+  // Set also old flag name backward compatibility.
+  $variables['is_panelized'] = $variables['has_page_layout'];
 }
 
 /**
